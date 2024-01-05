@@ -4,7 +4,8 @@ import java.io.Serializable
 
 data class RegisterModel(
     var id: String,
-    var pw: String
+    var password: String,
+    var classes: String
 )
 
 

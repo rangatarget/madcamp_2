@@ -25,7 +25,8 @@ class Register : AppCompatActivity() {
         binding.submit.setOnClickListener{
             val id = binding.inputId.text.toString()
             val pw = binding.inputPassword.text.toString()
-            val newUser = RegisterModel(id, pw)
+            val classes = binding.Class.text.toString()
+            val newUser = RegisterModel(id, pw, classes)
             api.register(newUser).enqueue(object: retrofit2.Callback<RegisterResult>{
                 override fun onResponse(call: Call<RegisterResult>, response: Response<RegisterResult>) {
                     val result = response.body()?.message ?: return
