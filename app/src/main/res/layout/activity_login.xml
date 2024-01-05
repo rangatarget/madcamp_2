@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".Register">
+
+    <TextView
+        android:id="@+id/login"
+        android:layout_width="109dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="152dp"
+        android:layout_marginTop="187dp"
+        android:gravity="center"
+        android:text="LOGIN"
+        android:fontFamily="@font/loginfont"
+        android:textAppearance="@style/login_title"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/input_id"
+        style="@style/register_page"
+        android:layout_width="295dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="59dp"
+        android:layout_marginTop="270dp"
+        android:background="@drawable/rectangle_1"
+        android:gravity="bottom"
+        android:textSize="20sp"
+        android:hint=" ID"
+        android:fontFamily="@font/loginfont"
+        android:textAppearance="@style/login_input" />
+    <EditText
+        android:id="@+id/input_password"
+        style="@style/register_page"
+        android:layout_width="295dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="59dp"
+        android:layout_marginTop="330dp"
+        android:background="@drawable/rectangle_1"
+        android:gravity="bottom"
+        android:textSize="20sp"
+        android:hint=" PASSWORD"
+        android:fontFamily="@font/loginfont"
+        android:textAppearance="@style/login_input" />
+
+    <TextView
+        android:id="@+id/button_login"
+        android:layout_width="295dp"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="59dp"
+        android:layout_marginTop="385dp"
+        android:background="@drawable/button_login"
+        android:gravity="center"
+        android:text="Sign In"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"/>
+
+    <TextView
+        android:id="@+id/button_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="440dp"
+        android:gravity="center"
+        android:text="Sign Up" />
+
+</RelativeLayout>
