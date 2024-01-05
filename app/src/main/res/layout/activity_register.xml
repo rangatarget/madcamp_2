@@ -7,6 +7,8 @@
     android:background="#FFFFFF"
     tools:context=".Register">
 
+
+
     <TextView
         android:id="@+id/register"
         android:layout_width="104dp"
@@ -157,5 +159,11 @@
         android:text="submit"
         android:gravity="center"
         android:background="@drawable/rectangle_1"/>
+
+    <ImageView
+        android:id="@+id/arrowback"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        tools:src="@drawable/arrowback" />
 
 </RelativeLayout>

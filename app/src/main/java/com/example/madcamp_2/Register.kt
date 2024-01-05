@@ -1,5 +1,6 @@
 package com.example.madcamp_2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import retrofit2.Call
@@ -16,6 +17,11 @@ class Register : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.arrowback.setOnClickListener{
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
+            finish()
+        }
         binding.submit.setOnClickListener{
             val id = binding.inputId.text.toString()
             val pw = binding.inputPassword.text.toString()
