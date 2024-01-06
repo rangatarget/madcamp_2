@@ -38,12 +38,11 @@
         android:textAppearance="@style/register_page" />
 
     <EditText
-        android:id="@+id/input_id"
+        android:id="@+id/inputid"
         android:layout_width="320dp"
         android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="24dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="160dp"
         android:fontFamily="@font/registerfont"
         android:background="@drawable/rectangle_1" />
@@ -52,7 +51,6 @@
         android:id="@+id/password"
         android:layout_width="168dp"
         android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="240dp"
@@ -62,13 +60,12 @@
         android:textAppearance="@style/register_page" />
 
     <EditText
-        android:id="@+id/input_password"
+        android:id="@+id/inputpassword"
         style="@style/register_page"
         android:layout_width="320dp"
         android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="24dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="270dp"
         android:background="@drawable/rectangle_1"
         android:hint="영문, 숫자 조합 8~16자"
@@ -76,7 +73,7 @@
         android:inputType="textPassword" />
 
     <TextView
-        android:id="@+id/password_confirm"
+        android:id="@+id/passwordconfirm"
         android:layout_width="168dp"
         android:layout_height="30dp"
         android:layout_alignParentLeft="true"
@@ -89,13 +86,12 @@
         android:textAppearance="@style/register_page" />
 
     <EditText
-        android:id="@+id/input_password_confirm"
+        android:id="@+id/inputpasswordconfirm"
         style="@style/register_page"
         android:layout_width="320dp"
         android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="24dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="380dp"
         android:background="@drawable/rectangle_1"
         android:hint="비밀번호를 한번 더 입력해주세요"
@@ -116,12 +112,11 @@
         android:textAppearance="@style/register_page" />
 
     <EditText
-        android:id="@+id/input_class"
+        android:id="@+id/inputclass"
         android:layout_width="320dp"
         android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="24dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="490dp"
         android:fontFamily="@font/registerfont"
         android:background="@drawable/rectangle_1" />
@@ -140,12 +135,11 @@
         android:textAppearance="@style/register_page" />
 
     <View
-        android:id="@+id/input_certification"
+        android:id="@+id/inputcertification"
         android:layout_width="320dp"
         android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="24dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="600dp"
         android:fontFamily="@font/registerfont"
         android:background="@drawable/rectangle_1" />
@@ -154,7 +148,7 @@
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="650dp"
         android:text="submit"
         android:gravity="center"

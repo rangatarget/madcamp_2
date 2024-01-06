@@ -19,11 +19,6 @@ data class LoginModel(
 )
 
 data class LoginResult(
-    var UID: Int
+    var token : String,
+    var id : String
 )
-
-data class User(
-    val UID: Int,
-    val id: String,
-    val password: String
-): Serializable

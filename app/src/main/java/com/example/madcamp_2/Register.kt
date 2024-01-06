@@ -23,10 +23,22 @@ class Register : AppCompatActivity() {
             finish()
         }
         binding.submit.setOnClickListener{
-            val id = binding.inputId.text.toString()
-            val pw = binding.inputPassword.text.toString()
-            val classes = binding.Class.text.toString()
-            val newUser = RegisterModel(id, pw, classes)
+            binding.apply {
+                val id = inputid.text.toString()
+                val pw = inputpassword.text.toString()
+                val classes = inputclass.text.toString()
+                val pwcheck = inputpasswordconfirm.text.toString()
+
+                if(id == "" || pw == "" || classes == "") {
+                    Toast.makeText(applicationContext, "입력하지 않은 정보가 있습니다.", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+                if(pw != pwcheck) {
+                    Toast.makeText(applicationContext, "비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+            }
+            val newUser = RegisterModel(binding.inputid.text.toString(), binding.inputpassword.text.toString(), binding.inputclass.text.toString())
             api.register(newUser).enqueue(object: retrofit2.Callback<RegisterResult>{
                 override fun onResponse(call: Call<RegisterResult>, response: Response<RegisterResult>) {
                     val result = response.body()?.message ?: return
