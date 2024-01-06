@@ -1,5 +1,6 @@
 package com.example.madcamp_2
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -28,7 +29,7 @@ class BoardClass : AppCompatActivity() {
                 }
                 val layoutManager = LinearLayoutManager(this@BoardClass)
                 binding.rcvBoardClass.layoutManager = layoutManager
-                val adapter = BoardClassAdapter(boardList)
+                val adapter = BoardClassAdapter(this@BoardClass, boardList)
                 binding.rcvBoardClass.adapter = adapter
             }
 

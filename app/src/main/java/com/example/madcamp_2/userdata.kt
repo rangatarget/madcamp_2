@@ -22,3 +22,11 @@ data class LoginResult(
     var token : String,
     var id : String
 )
+
+data class IdCertification(
+    var id : String
+)
+
+data class IdCertificationResult(
+    var isExist : Boolean
+)

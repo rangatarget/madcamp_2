@@ -7,7 +7,7 @@
     android:background="@android:color/background_light">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcvBoardClass"
+        android:id="@+id/rcvBoard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="50dp"
@@ -15,7 +15,7 @@
         tools:ignore="NotSibling" />
 
     <TextView
-        android:id="@+id/boardclasstitle"
+        android:id="@+id/boardtitle"
         android:layout_marginLeft="45dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

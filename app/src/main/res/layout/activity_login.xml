@@ -61,7 +61,8 @@
         android:gravity="center"
         android:text="Sign In"
         android:textSize="20sp"
-        android:textColor="#FFFFFF"/>
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/loginfont" />
 
     <TextView
         android:id="@+id/buttonsignup"
@@ -71,6 +72,7 @@
         android:layout_marginLeft="320dp"
         android:layout_marginTop="440dp"
         android:gravity="center"
-        android:text="Sign Up" />
+        android:text="Sign Up"
+        android:fontFamily="@font/loginfont" />
 
 </RelativeLayout>

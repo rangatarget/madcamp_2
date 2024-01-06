@@ -23,14 +23,4 @@
         android:gravity="center_vertical"
         android:text="Name" />
 
-    <TextView
-        android:id="@+id/createrTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_toEndOf="@id/nameTextView"
-        android:layout_marginLeft="10dp"
-        android:textSize="20sp"
-        android:gravity="center_vertical"
-        android:text="Creater" />
-
 </RelativeLayout>

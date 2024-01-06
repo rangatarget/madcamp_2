@@ -23,8 +23,18 @@ interface RetroInterface{
         @Body jsonparams: LoginModel
     ) : Call<LoginResult>
 
+    @POST("/login/idcert")
+    fun idCert(
+        @Body jsonparams: IdCertification
+    ) : Call<IdCertificationResult>
+
     @GET("/boardclass")
     fun getBoardClass(): Call<ArrayList<BoardClassModel>>
+
+    @POST("/board")
+    fun getBoard(
+        @Body jsonparams: BoardName
+    ) : Call<ArrayList<BoardModel>>
 
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.
         private const val BASE_URL = "http://192.249.29.52:4000" //

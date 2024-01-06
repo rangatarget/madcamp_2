@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="24dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="66dp"
         android:gravity="top"
         android:text="회원가입"
@@ -30,7 +30,7 @@
         android:layout_height="30dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="24dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="130dp"
         android:gravity="top"
         android:text="ID"
@@ -52,7 +52,7 @@
         android:layout_width="168dp"
         android:layout_height="30dp"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="24dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="240dp"
         android:gravity="top"
         android:text="PASSWORD"
@@ -78,7 +78,7 @@
         android:layout_height="30dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="24dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="350dp"
         android:gravity="top"
         android:text="PASSWORD CONFIRM"
@@ -104,7 +104,7 @@
         android:layout_height="30dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="24dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="460dp"
         android:gravity="top"
         android:text="분반"
@@ -122,42 +122,33 @@
         android:background="@drawable/rectangle_1" />
 
     <TextView
-        android:id="@+id/certification"
-        android:layout_width="60dp"
-        android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="570dp"
-        android:gravity="top"
-        android:text="본인인증"
-        android:fontFamily="@font/registerfont"
-        android:textAppearance="@style/register_page" />
-
-    <View
-        android:id="@+id/inputcertification"
-        android:layout_width="320dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="600dp"
-        android:fontFamily="@font/registerfont"
-        android:background="@drawable/rectangle_1" />
-
-    <TextView
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="650dp"
-        android:text="submit"
+        android:text="Register"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         android:gravity="center"
-        android:background="@drawable/rectangle_1"/>
+        android:background="@drawable/button_cert"/>
 
     <ImageView
         android:id="@+id/arrowback"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        tools:src="@drawable/arrowback" />
+        app:srcCompat="@drawable/arrowback" />
+
+    <TextView
+        android:id="@+id/idcert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="132dp"
+        android:text="Register"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:background="@drawable/button_cert"/>
 
 </RelativeLayout>

@@ -53,5 +53,28 @@ class Register : AppCompatActivity() {
                 }
             })
         }
+        binding.idcert.setOnClickListener{
+            binding.apply {
+                val id = inputid.text.toString()
+                if(id == "") {
+                    Toast.makeText(applicationContext, "입력하지 않은 정보가 있습니다.", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+            }
+            val idcert = IdCertification(binding.inputid.text.toString())
+            api.idCert(idcert).enqueue(object: retrofit2.Callback<IdCertificationResult>{
+                override fun onResponse(call: Call<IdCertificationResult>, response: Response<IdCertificationResult>) {
+                    val isExist = response.body()?.isExist ?: return
+                    if(isExist)
+                        Toast.makeText(applicationContext, "이미 존재하는 아이디 입니다.", Toast.LENGTH_SHORT).show()
+                    else
+                        Toast.makeText(applicationContext, "사용 가능한 아이디 입니다.", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onFailure(call: Call<IdCertificationResult>, t: Throwable) {
+                    Log.d("testt", t.message.toString())
+                }
+            })
+        }
     }
 }
