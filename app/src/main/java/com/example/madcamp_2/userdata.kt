@@ -4,9 +4,12 @@ import java.io.Serializable
 
 data class RegisterModel(
     var id: String,
-    var pw: String
+    var pw: String,
+    var classes: String
 )
-
+data class IdCertificationModel(
+    var id: String
+)
 
 data class RegisterResult(
     var message: Boolean
@@ -18,11 +21,9 @@ data class LoginModel(
 )
 
 data class LoginResult(
-    var UID: Int
+    var id: String
 )
 
-data class User(
-    val UID: Int,
-    val id: String,
-    val password: String
-): Serializable
+data class IdCertificationResult(
+    var isExist: Boolean
+)
