@@ -17,3 +17,12 @@ data class BoardClassModel(
 data class BoardName(
     var name : String
 )
+
+data class Createboardclass(
+    var newtitle: String,
+    var creater: String
+)
+
+data class CreateboardclassResponse(
+    var success: Boolean
+)

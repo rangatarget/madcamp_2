@@ -31,5 +31,13 @@
         android:layout_marginTop="7dp"
         app:srcCompat="@drawable/arrowback" />
 
+    <ImageView
+        android:id="@+id/buttonadd"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="365dp"
+        android:layout_marginTop="7dp"
+        app:srcCompat="@drawable/plus" />
+
 
 </RelativeLayout>

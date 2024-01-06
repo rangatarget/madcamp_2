@@ -31,6 +31,11 @@ interface RetroInterface{
     @GET("/boardclass")
     fun getBoardClass(): Call<ArrayList<BoardClassModel>>
 
+    @POST("/boardclass/create")
+    fun createBoardClass(
+        @Body jsonparams: Createboardclass
+    ) : Call<CreateboardclassResponse>
+
     @POST("/board")
     fun getBoard(
         @Body jsonparams: BoardName

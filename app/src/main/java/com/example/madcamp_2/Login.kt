@@ -44,6 +44,7 @@ class Login : AppCompatActivity() {
                     if(user_id != "") {
                         Toast.makeText(applicationContext, user_id + "로그인 성공", Toast.LENGTH_SHORT).show()
                         Log.d("로그인 성공", "user_token : " + user_token + "   user_id : " + user_id)
+                        MyApplication.prefs.setString("id", user_id)
                         val intent = Intent(this@Login, BoardClass::class.java)
                         startActivity(intent)
                         finish()
