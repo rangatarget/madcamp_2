@@ -41,6 +41,18 @@ interface RetroInterface{
         @Body jsonparams: BoardName
     ) : Call<ArrayList<BoardModel>>
 
+    @POST("/checkedboardclass")
+    fun getCheckedBoardClass(
+        @Body jsonparams: Checkedboardclass
+    ) : Call<ArrayList<BoardClassModel>>
+
+    @POST("/getcomments")
+    fun getComments(
+        @Body jsonparams: getcomment
+    ) : Call<ArrayList<Comment>>
+
+
+
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.
         private const val BASE_URL = "http://192.249.29.52:4000" //
 

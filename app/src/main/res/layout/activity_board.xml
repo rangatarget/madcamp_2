@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="33sp"
-        android:text="Boards"
+        android:text="Posts"
         android:fontFamily="@font/loginfont"/>
 
     <ImageView
@@ -30,6 +30,14 @@
         android:layout_marginLeft="7dp"
         android:layout_marginTop="7dp"
         app:srcCompat="@drawable/arrowback" />
+
+    <ImageView
+        android:id="@+id/buttonadd"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="365dp"
+        android:layout_marginTop="7dp"
+        app:srcCompat="@drawable/plus" />
 
 
 </RelativeLayout>

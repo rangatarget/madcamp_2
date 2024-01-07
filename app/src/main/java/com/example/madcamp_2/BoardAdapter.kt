@@ -1,5 +1,6 @@
 package com.example.madcamp_2
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -9,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class BoardAdapter(val context: Context, private val itemList: ArrayList<BoardModel>) :
+class BoardAdapter(val context: Context, private val itemList: ArrayList<BoardModel>, val classname: String) :
     RecyclerView.Adapter<BoardAdapter.BoardViewHolder>() {
     // 뷰홀더 클래스 정의
     inner class BoardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -18,7 +19,15 @@ class BoardAdapter(val context: Context, private val itemList: ArrayList<BoardMo
         val author: TextView = itemView.findViewById(R.id.author)
         fun bind(item: BoardModel) {
             itemView.setOnClickListener {
-                Log.d("게시물 눌림", "test")
+                Log.d("게시물 눌림", item.title)
+                val intent = Intent(context, Post::class.java)
+                intent.putExtra("classname", classname)
+                intent.putExtra("title", item.title)
+                intent.putExtra("author", item.author)
+                intent.putExtra("context", item.context)
+                intent.putExtra("_id", item._id.toString())
+                itemView.context.startActivity(intent)
+                (context as Activity).finish()
             }
         }
     }

@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp">
 
     <TextView
@@ -52,4 +53,13 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/button_login"
         android:textColor="#FFF"/>
+
+    <ImageView
+        android:id="@+id/kakaologin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="460dp"
+        app:srcCompat="@drawable/kakaologin" />
+
 </RelativeLayout>

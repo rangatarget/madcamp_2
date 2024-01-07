@@ -37,7 +37,7 @@ class BoardClassAdapter(val context: Context, private val itemList: ArrayList<Bo
     // onBindViewHolder: ViewHolder가 데이터와 연결될 때 호출되는 메서드
     override fun onBindViewHolder(holder: BoardClassViewHolder, position: Int) {
         val item = itemList[position]
-        holder.nameTextView.text = "${item.name}"
+        holder.nameTextView.text = item.name
         Log.d("BoardClass bind",item.name)
         holder.bind(item)
     }

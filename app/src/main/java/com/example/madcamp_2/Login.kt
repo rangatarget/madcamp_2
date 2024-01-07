@@ -6,7 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.madcamp_2.databinding.ActivityLoginBinding
-import com.example.madcamp_2.databinding.ActivityRegisterBinding
+import com.kakao.sdk.common.util.Utility
+import com.kakao.sdk.user.UserApiClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,6 +17,7 @@ class Login : AppCompatActivity() {
     val api = RetroInterface.create()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("tag", "keyhash : ${Utility.getKeyHash(this)}")
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -23,6 +25,10 @@ class Login : AppCompatActivity() {
             val intent = Intent(this, Register::class.java)
             startActivity(intent)
             finish()
+        }
+
+        binding.kakaologin.setOnClickListener{
+            kakaologin()
         }
 
         binding.buttonlogin.setOnClickListener{
@@ -45,7 +51,7 @@ class Login : AppCompatActivity() {
                         Toast.makeText(applicationContext, user_id + "로그인 성공", Toast.LENGTH_SHORT).show()
                         Log.d("로그인 성공", "user_token : " + user_token + "   user_id : " + user_id)
                         MyApplication.prefs.setString("id", user_id)
-                        val intent = Intent(this@Login, BoardClass::class.java)
+                        val intent = Intent(this@Login, MainActivity::class.java)
                         startActivity(intent)
                         finish()
                     }
@@ -59,6 +65,17 @@ class Login : AppCompatActivity() {
                     Log.d("testt", t.message.toString())
                 }
             })
+        }
+    }
+
+    private fun kakaologin(){
+        UserApiClient.instance.loginWithKakaoTalk(this) { token, error ->
+            if (error != null) {
+                Log.e("카카오", "로그인 실패", error)
+            }
+            else if (token != null) {
+                Log.i("카카오", "로그인 성공 ${token.accessToken}")
+            }
         }
     }
 }

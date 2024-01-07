@@ -3,10 +3,10 @@ package com.example.madcamp_2
 import java.io.Serializable
 
 data class BoardModel(
+    var _id: Int,
     var author: String,
     var title: String,
-    var context: String,
-    var board: String
+    var context: String
 ) : Serializable
 
 data class BoardClassModel(
@@ -25,4 +25,16 @@ data class Createboardclass(
 
 data class CreateboardclassResponse(
     var success: Boolean
+)
+
+data class Checkedboardclass(
+    var id: String
+)
+
+data class getcomment(
+    var _id: Int
+)
+data class Comment(
+    var writer: String,
+    var context: String
 )

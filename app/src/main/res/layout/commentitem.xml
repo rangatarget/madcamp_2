@@ -7,33 +7,22 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/writer"
         android:gravity="center_vertical"
         android:layout_height="40dp"
         android:layout_width="match_parent"
         android:layout_marginLeft="10dp"
-        android:text="Name"
+        android:text="Writer"
         android:textSize="30sp" />
 
     <TextView
-        android:id="@+id/contents"
+        android:id="@+id/context"
         android:gravity="center_vertical"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="40dp"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:text="Contents"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/author"
-        android:gravity="center_vertical"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="60dp"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="Author"
-        android:textColor="#808080"
+        android:text="Context"
         android:textSize="15sp" />
 
 

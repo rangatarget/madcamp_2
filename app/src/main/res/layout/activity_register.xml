@@ -6,112 +6,121 @@
     android:padding="16dp"
     android:background="@android:color/white">
 
-    <ImageView
-        android:id="@+id/arrowback"
-        android:layout_width="23dp"
-        android:layout_height="22dp"
-        app:srcCompat="@drawable/arrowback" />
-
-    <TextView
-        android:id="@+id/register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="회원가입"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:textSize="24sp"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/register"
-        android:layout_marginTop="30dp"
-        android:text="ID*" />
-
-    <EditText
-        android:id="@+id/inputid"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/id"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        android:layout_toStartOf="@+id/idcert"
-        android:hint="ID"
-        android:inputType="textEmailAddress" />
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/idcert"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/inputid"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="12dp"
-        android:src="@drawable/checkmark"
-        android:elevation="4dp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PASSWORD*"
-        android:layout_below="@id/inputid"
-        android:layout_marginTop="30dp"/>
+            <ImageView
+                android:id="@+id/arrowback"
+                android:layout_width="23dp"
+                android:layout_height="22dp"
+                app:srcCompat="@drawable/arrowback" />
 
-    <EditText
-        android:id="@+id/inputpassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/password"
-        android:inputType="textPassword"
-        android:hint="영문, 숫자 조합 8~16자"/>
+            <TextView
+                android:id="@+id/register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="회원가입"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/confirmPasswordLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CONFIRM PASSWORD*"
-        android:layout_below="@id/inputpassword"
-        android:layout_marginTop="30dp"/>
+            <TextView
+                android:id="@+id/id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/register"
+                android:layout_marginTop="30dp"
+                android:text="ID*" />
 
-    <EditText
-        android:id="@+id/inputpasswordconfirm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/confirmPasswordLabel"
-        android:inputType="textPassword"
-        android:hint="비밀번호를 한 번 더 입력해주세요."/>
+            <EditText
+                android:id="@+id/inputid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/id"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@+id/idcert"
+                android:hint="ID"
+                android:inputType="textEmailAddress" />
 
-    <TextView
-        android:id="@+id/Class"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CLASS*"
-        android:layout_below="@id/inputpasswordconfirm"
-        android:layout_marginTop="30dp"/>
+            <ImageView
+                android:id="@+id/idcert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/inputid"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/checkmark"
+                android:elevation="4dp" />
 
-    <EditText
-        android:id="@+id/inputclass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Class"
-        android:inputType="text"
-        android:hint="Enter your class"/>
+            <TextView
+                android:id="@+id/password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PASSWORD*"
+                android:layout_below="@id/inputid"
+                android:layout_marginTop="30dp"/>
+
+            <EditText
+                android:id="@+id/inputpassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/password"
+                android:inputType="textPassword"
+                android:hint="영문, 숫자 조합 8~16자"/>
+
+            <TextView
+                android:id="@+id/confirmPasswordLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CONFIRM PASSWORD*"
+                android:layout_below="@id/inputpassword"
+                android:layout_marginTop="30dp"/>
+
+            <EditText
+                android:id="@+id/inputpasswordconfirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/confirmPasswordLabel"
+                android:inputType="textPassword"
+                android:hint="비밀번호를 한 번 더 입력해주세요."/>
+
+            <TextView
+                android:id="@+id/Class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CLASS*"
+                android:layout_below="@id/inputpasswordconfirm"
+                android:layout_marginTop="30dp"/>
+
+            <EditText
+                android:id="@+id/inputclass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Class"
+                android:inputType="text"
+                android:hint="Enter your class"/>
 
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/submit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:layout_below="@id/inputclass"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/button_login"
-        android:textColor="#FFFFFF"
-        android:layout_marginBottom="20dp"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:layout_below="@id/inputclass"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/button_login"
+                android:textColor="#FFFFFF"/>
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>
