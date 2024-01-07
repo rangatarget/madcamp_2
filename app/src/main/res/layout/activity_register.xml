@@ -1,126 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:background="@android:color/white">
-
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:background="@android:color/white">
 
-        <RelativeLayout
+        <ImageView
+            android:id="@+id/arrowback"
+            android:layout_width="23dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/arrowback" />
+
+        <TextView
+            android:id="@+id/register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/titlefont"
+            android:text="회원가입"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.424"
+            app:layout_constraintStart_toEndOf="@+id/arrowback"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/register"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="56dp"
+            android:text="ID*"
+            android:fontFamily="@font/chakrapetch_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/register" />
+
+        <EditText
+            android:id="@+id/inputid"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/arrowback"
-                android:layout_width="23dp"
-                android:layout_height="22dp"
-                app:srcCompat="@drawable/arrowback" />
-
-            <TextView
-                android:id="@+id/register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="회원가입"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="30dp"
-                android:textSize="24sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/register"
-                android:layout_marginTop="30dp"
-                android:text="ID*" />
-
-            <EditText
-                android:id="@+id/inputid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/id"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="10dp"
-                android:layout_toStartOf="@+id/idcert"
-                android:hint="ID"
-                android:inputType="textEmailAddress" />
-
-            <ImageView
-                android:id="@+id/idcert"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/inputid"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="12dp"
-                android:src="@drawable/checkmark"
-                android:elevation="4dp" />
-
-            <TextView
-                android:id="@+id/password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PASSWORD*"
-                android:layout_below="@id/inputid"
-                android:layout_marginTop="30dp"/>
-
-            <EditText
-                android:id="@+id/inputpassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/password"
-                android:inputType="textPassword"
-                android:hint="영문, 숫자 조합 8~16자"/>
-
-            <TextView
-                android:id="@+id/confirmPasswordLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="CONFIRM PASSWORD*"
-                android:layout_below="@id/inputpassword"
-                android:layout_marginTop="30dp"/>
-
-            <EditText
-                android:id="@+id/inputpasswordconfirm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/confirmPasswordLabel"
-                android:inputType="textPassword"
-                android:hint="비밀번호를 한 번 더 입력해주세요."/>
-
-            <TextView
-                android:id="@+id/Class"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="CLASS*"
-                android:layout_below="@id/inputpasswordconfirm"
-                android:layout_marginTop="30dp"/>
-
-            <EditText
-                android:id="@+id/inputclass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/Class"
-                android:inputType="text"
-                android:hint="Enter your class"/>
+            android:layout_height="wrap_content"
+            android:layout_below="@id/id"
+            android:layout_alignParentStart="true"
+            android:hint="ID"
+            android:inputType="textEmailAddress"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/idcert"
+            app:layout_constraintTop_toBottomOf="@id/id" />
 
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/idcert"
+            android:layout_width="63dp"
+            android:layout_height="33dp"
+            android:layout_alignTop="@id/inputid"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:text="중복 확인"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@id/inputid"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/inputid"
+            app:layout_constraintVertical_bias="0.0" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/submit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Register"
-                android:layout_below="@id/inputclass"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/button_login"
-                android:textColor="#FFFFFF"/>
-        </RelativeLayout>
-    </ScrollView>
+        <TextView
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/inputid"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="40dp"
+            android:text="PASSWORD*"
+            android:fontFamily="@font/chakrapetch_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputid" />
 
-</RelativeLayout>
+        <EditText
+            android:id="@+id/inputpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/password"
+            android:hint="영문, 숫자 조합 8~16자"
+            android:inputType="textPassword"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/password" />
+
+        <TextView
+            android:id="@+id/passwordconfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/inputpassword"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="40dp"
+            android:text="CONFIRM PASSWORD*"
+            android:fontFamily="@font/chakrapetch_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputpassword" />
+
+        <EditText
+            android:id="@+id/inputpasswordconfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="비밀번호를 한 번 더 입력해주세요."
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/passwordconfirm" />
+
+        <TextView
+            android:id="@+id/Class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="40dp"
+            android:text="CLASS*"
+            android:fontFamily="@font/chakrapetch_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputpasswordconfirm" />
+
+        <EditText
+            android:id="@+id/inputclass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Enter your class"
+            android:inputType="text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Class" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/submit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/button_login"
+            android:text="Register"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputclass" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
