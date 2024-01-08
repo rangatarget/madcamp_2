@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import retrofit2.Call
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.example.madcamp_2.databinding.ActivityRegisterBinding
 import retrofit2.Response
@@ -69,16 +70,21 @@ class Register : AppCompatActivity() {
             api.idCert(idcert).enqueue(object: retrofit2.Callback<IdCertificationResult>{
                 override fun onResponse(call: Call<IdCertificationResult>, response: Response<IdCertificationResult>) {
                     val isExist = response.body()?.isExist ?: return
-                    if(isExist)
+                    if(isExist) {
                         Toast.makeText(applicationContext, "이미 존재하는 아이디 입니다.", Toast.LENGTH_SHORT).show()
-                    else
+                        binding.checkImage.setImageResource(R.drawable.redcheck)
+                    } else {
                         Toast.makeText(applicationContext, "사용 가능한 아이디 입니다.", Toast.LENGTH_SHORT).show()
+                        binding.checkImage.setImageResource(R.drawable.greencheck)
+                    }
+                    binding.checkImage.visibility = View.VISIBLE
                 }
 
                 override fun onFailure(call: Call<IdCertificationResult>, t: Throwable) {
                     Log.d("testt", t.message.toString())
                 }
             })
+
         }
     }
 }
