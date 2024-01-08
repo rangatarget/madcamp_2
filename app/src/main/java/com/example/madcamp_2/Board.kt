@@ -47,7 +47,11 @@ class Board : AppCompatActivity() {
             finish()
         }
         binding.buttonadd.setOnClickListener{
-            Log.d("게시물 추가버튼 눌림","아직 구현 안함")
+            Log.d("게시물 추가버튼 눌림","구현 중")
+            val intent = Intent(this, BoardClass::class.java)
+            intent.putExtra("boardclass", boardClassName)
+            startActivity(intent)
+            finish()
         }
     }
 }

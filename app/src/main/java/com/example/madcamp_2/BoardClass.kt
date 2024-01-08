@@ -67,7 +67,7 @@ class BoardClass : AppCompatActivity() {
         buttonAdd.setOnClickListener {
             val newTitle = editTextTitle.text.toString()
             // TODO: 여기서 새로운 제목을 처리하거나 저장하는 로직을 구현
-            val id = MyApplication.prefs.getString("id", "")
+            val id = MyApplication.prefs.getString("nickname", "")
             api.createBoardClass(Createboardclass(newTitle, id)).enqueue(object: Callback<CreateboardclassResponse> {
                 override fun onResponse(
                     call: Call<CreateboardclassResponse>,

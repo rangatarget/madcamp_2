@@ -8,7 +8,6 @@ data class RegisterModel(
     var classes: String
 )
 
-
 data class RegisterResult(
     var message: Boolean
 )
@@ -19,8 +18,8 @@ data class LoginModel(
 )
 
 data class LoginResult(
-    var token : String,
-    var id : String
+    var nickname : String,
+    var profile : String
 )
 
 data class IdCertification(
@@ -29,4 +28,15 @@ data class IdCertification(
 
 data class IdCertificationResult(
     var isExist : Boolean
+)
+
+data class kakaoExist(
+    var id: String
+)
+
+data class kakaoregister(
+    var id: String,
+    var profile: String,
+    var classes: String,
+    var nickname: String
 )

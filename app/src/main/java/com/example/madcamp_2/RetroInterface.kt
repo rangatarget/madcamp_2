@@ -51,6 +51,21 @@ interface RetroInterface{
         @Body jsonparams: getcomment
     ) : Call<ArrayList<Comment>>
 
+    @POST("/kakaologin")
+    fun kakaoLogin(
+        @Body jsonparams: kakaoExist
+    ) : Call<RegisterResult>
+
+    @POST("/kakaoregister")
+    fun kakaoRegister(
+        @Body jsonparams: kakaoregister
+    ) : Call<RegisterResult>
+
+    @POST("/createboard")
+    fun createBoard(
+        @Body jsonparams: Createboard
+    ) : Call<RegisterResult>
+
 
 
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.

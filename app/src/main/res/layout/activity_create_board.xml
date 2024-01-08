@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/background_light">
+
+    <EditText
+        android:id="@+id/posttitle"
+        android:layout_marginLeft="45dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:hint="제목을 입력해주세요"
+        android:fontFamily="@font/loginfont"/>
+
+    <ImageView
+        android:id="@+id/arrowback"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="7dp"
+        app:srcCompat="@drawable/arrowback" />
+
+    <EditText
+        android:id="@+id/postcontext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/loginfont"
+        android:hint="내용을 입력해주세요"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/apply"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="7dp"
+        android:text="추가하기"
+        android:textSize="20sp" />
+
+</RelativeLayout>

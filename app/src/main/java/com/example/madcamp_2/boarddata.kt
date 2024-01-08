@@ -38,3 +38,10 @@ data class Comment(
     var writer: String,
     var context: String
 )
+
+data class Createboard(
+    var author: String,
+    var title: String,
+    var context: String,
+    var boardclass: String
+)
