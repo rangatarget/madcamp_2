@@ -10,7 +10,7 @@
         android:id="@+id/rcvBoardClass"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="90dp"
         android:background="@android:color/background_light"
         tools:ignore="NotSibling" />
 
@@ -24,23 +24,24 @@
         android:fontFamily="@font/titlefont"
         android:text="전체 게시판 목록"
         android:textStyle="bold"
-        android:textSize="35sp" />
+        android:textSize="45sp" />
 
     <ImageView
         android:id="@+id/arrowback"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         app:srcCompat="@drawable/arrowback" />
 
     <ImageView
         android:id="@+id/buttonadd"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="21dp"
         app:srcCompat="@drawable/plus" />
 
 </RelativeLayout>

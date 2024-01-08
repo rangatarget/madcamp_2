@@ -88,7 +88,7 @@
         android:layout_marginTop="294dp"
         android:text="계정이 없으신가요?"
         android:textSize="15sp"
-        android:textColor="#FF000000" />
+        android:textColor="#9C9999" />
 
     <TextView
         android:id="@+id/buttonsignup"
@@ -99,6 +99,6 @@
         android:layout_marginTop="294dp"
         android:text="회원가입"
         android:textSize="15sp"
-        android:textColor="#FF000000" />
+        android:textColor="#9C9999" />
 
 </RelativeLayout>
