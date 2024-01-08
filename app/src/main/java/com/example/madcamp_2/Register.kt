@@ -42,8 +42,12 @@ class Register : AppCompatActivity() {
             api.register(newUser).enqueue(object: retrofit2.Callback<RegisterResult>{
                 override fun onResponse(call: Call<RegisterResult>, response: Response<RegisterResult>) {
                     val result = response.body()?.message ?: return
-                    if(result)
+                    if(result) {
                         Toast.makeText(applicationContext, "회원가입 성공", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@Register, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
                     else
                         Toast.makeText(applicationContext, "회원가입 실패, 이미 존재하는 아이디 입니다.", Toast.LENGTH_SHORT).show()
                 }

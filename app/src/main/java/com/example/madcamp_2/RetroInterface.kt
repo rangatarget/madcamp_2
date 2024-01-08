@@ -41,6 +41,60 @@ interface RetroInterface{
         @Body jsonparams: BoardName
     ) : Call<ArrayList<BoardModel>>
 
+    @POST("/checkedboardclass")
+    fun getCheckedBoardClass(
+        @Body jsonparams: Checkedboardclass
+    ) : Call<ArrayList<BoardClassModel>>
+
+    @POST("/getcomments")
+    fun getComments(
+        @Body jsonparams: getcomment
+    ) : Call<ArrayList<Comment>>
+
+    @POST("/kakaologin")
+    fun kakaoLogin(
+        @Body jsonparams: kakaoExist
+    ) : Call<RegisterResult>
+
+    @POST("/kakaoregister")
+    fun kakaoRegister(
+        @Body jsonparams: kakaoregister
+    ) : Call<RegisterResult>
+
+    @POST("/createboard")
+    fun createBoard(
+        @Body jsonparams: boardcreate
+    ) : Call<RegisterResult>
+
+    @POST("/createcomment")
+    fun createComment(
+        @Body jsonparams: commentcreate
+    ) : Call<RegisterResult>
+
+    @POST("/deletecomment")
+    fun deleteComment(
+        @Body jsonparams: deletecomment
+    ) : Call<RegisterResult>
+
+    @POST("/updatecomment")
+    fun updateComment(
+        @Body jsonparams: updatecomment
+    ) : Call<RegisterResult>
+
+    @POST("/deletepost")
+    fun deletePost(
+        @Body jsonparams: deletepost
+    ) : Call<RegisterResult>
+
+    @POST("/updatepost")
+    fun updatePost(
+        @Body jsonparams: update_post
+    ) : Call<RegisterResult>
+
+
+
+
+
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.
         private const val BASE_URL = "http://192.249.29.52:4000" //
 

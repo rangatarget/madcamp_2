@@ -17,6 +17,33 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ProfileSetting"
+            android:exported="false" />
+        <activity
+            android:name=".UpdatePost"
+            android:exported="false" />
+        <activity
+            android:name=".CreateBoard"
+            android:exported="false" />
+        <activity
+            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Redirect URI: "kakao${NATIVE_APP_KEY}://oauth" -->
+                <data
+                    android:host="oauth"
+                    android:scheme="kakao2ac18b5fbc5d1cbc02979d8c51265676" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Post"
+            android:exported="false" />
+        <activity
             android:name=".Board"
             android:exported="false" />
         <activity
@@ -30,13 +57,13 @@
         </activity>
         <activity
             android:name=".Login"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".Register"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".BoardClass"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

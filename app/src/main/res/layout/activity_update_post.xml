@@ -1,26 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/background_light">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcvBoard"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
-        android:background="@android:color/background_light"
-        tools:ignore="NotSibling" />
-
-    <TextView
-        android:id="@+id/boardtitle"
+    <EditText
+        android:id="@+id/posttitle"
         android:layout_marginLeft="45dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="33sp"
-        android:text="Posts"
+        android:textSize="20sp"
+        android:hint="제목을 입력해주세요"
         android:fontFamily="@font/loginfont"/>
 
     <ImageView
@@ -31,13 +22,22 @@
         android:layout_marginTop="7dp"
         app:srcCompat="@drawable/arrowback" />
 
-    <ImageView
-        android:id="@+id/buttonadd"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="365dp"
-        android:layout_marginTop="7dp"
-        app:srcCompat="@drawable/plus" />
+    <EditText
+        android:id="@+id/postcontext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/loginfont"
+        android:hint="내용을 입력해주세요"
+        android:textSize="20sp" />
 
+    <TextView
+        android:id="@+id/apply"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="7dp"
+        android:text="게시글 수정"
+        android:textSize="20sp" />
 
 </RelativeLayout>

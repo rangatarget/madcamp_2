@@ -80,25 +80,31 @@
         android:layout_centerHorizontal="true"
         app:srcCompat="@drawable/kakaologin" />
 
-    <TextView
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonlogin"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="294dp"
-        android:text="계정이 없으신가요?"
-        android:textSize="15sp"
-        android:textColor="#9C9999" />
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp">
 
-    <TextView
-        android:id="@+id/buttonsignup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/buttonlogin"
-        android:layout_marginLeft="240dp"
-        android:layout_marginTop="294dp"
-        android:text="회원가입"
-        android:textSize="15sp"
-        android:textColor="#9C9999" />
+        <TextView
+            android:id="@+id/noaccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="계정이 없으신가요?"
+            android:textSize="15sp"
+            android:textColor="#FF000000" />
+
+        <TextView
+            android:id="@+id/buttonsignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/noaccount"
+            android:layout_marginLeft="40dp"
+            android:text="회원가입"
+            android:textSize="15sp"
+            android:textColor="#FF000000" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

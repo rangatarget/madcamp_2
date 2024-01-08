@@ -1,5 +1,6 @@
 package com.example.madcamp_2
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -43,9 +44,13 @@ class BoardClass : AppCompatActivity() {
                 Log.d("testt",t.message.toString())
             }
         })
-
         binding.buttonadd.setOnClickListener {
             showDialog()
+        }
+        binding.arrowback.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
     private fun showDialog() {
@@ -56,7 +61,7 @@ class BoardClass : AppCompatActivity() {
         // 다이얼로그 생성
         val alertDialogBuilder = AlertDialog.Builder(this)
             .setView(dialogView)
-            .setTitle("새로운 제목 추가")
+            .setTitle("새로운 게시판 추가")
 
         val alertDialog = alertDialogBuilder.create()
 
@@ -67,7 +72,7 @@ class BoardClass : AppCompatActivity() {
         buttonAdd.setOnClickListener {
             val newTitle = editTextTitle.text.toString()
             // TODO: 여기서 새로운 제목을 처리하거나 저장하는 로직을 구현
-            val id = MyApplication.prefs.getString("id", "")
+            val id = MyApplication.prefs.getString("nickname", "")
             api.createBoardClass(Createboardclass(newTitle, id)).enqueue(object: Callback<CreateboardclassResponse> {
                 override fun onResponse(
                     call: Call<CreateboardclassResponse>,

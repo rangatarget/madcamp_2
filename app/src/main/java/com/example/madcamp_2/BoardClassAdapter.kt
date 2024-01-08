@@ -8,7 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class BoardClassAdapter(val context: Context, private val itemList: ArrayList<BoardClassModel>) :
     RecyclerView.Adapter<BoardClassAdapter.BoardClassViewHolder>() {
@@ -16,12 +20,17 @@ class BoardClassAdapter(val context: Context, private val itemList: ArrayList<Bo
     // 뷰홀더 클래스 정의
     inner class BoardClassViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameTextView: TextView = itemView.findViewById(R.id.nameTextView)
+        val enterBoard: View = itemView.findViewById(R.id.enterBoard)
+        val addStar: View = itemView.findViewById(R.id.addStar)
         fun bind(item: BoardClassModel){
-            itemView.setOnClickListener{
+            enterBoard.setOnClickListener{
                 val intent = Intent(context, Board::class.java)
                 intent.putExtra("boardclass", item.name)
                 itemView.context.startActivity(intent)
                 (context as Activity).finish()
+            }
+            addStar.setOnClickListener{
+                Log.v("즐겨찾기 버튼 누름", "게시판 이름 : " + item.name)
             }
         }
     }
@@ -37,7 +46,7 @@ class BoardClassAdapter(val context: Context, private val itemList: ArrayList<Bo
     // onBindViewHolder: ViewHolder가 데이터와 연결될 때 호출되는 메서드
     override fun onBindViewHolder(holder: BoardClassViewHolder, position: Int) {
         val item = itemList[position]
-        holder.nameTextView.text = "${item.name}"
+        holder.nameTextView.text = item.name
         Log.d("BoardClass bind",item.name)
         holder.bind(item)
     }

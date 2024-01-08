@@ -31,7 +31,7 @@ class Board : AppCompatActivity() {
                 }
                 val layoutManager = LinearLayoutManager(this@Board)
                 binding.rcvBoard.layoutManager = layoutManager
-                val adapter = BoardAdapter(this@Board, boards)
+                val adapter = BoardAdapter(this@Board, boards, boardClassName)
                 binding.rcvBoard.adapter = adapter
                 binding.boardtitle.text = boardClassName
 
@@ -43,6 +43,13 @@ class Board : AppCompatActivity() {
         })
         binding.arrowback.setOnClickListener{
             val intent = Intent(this, BoardClass::class.java)
+            startActivity(intent)
+            finish()
+        }
+        binding.buttonadd.setOnClickListener{
+            Log.d("게시물 추가버튼 눌림","구현 중")
+            val intent = Intent(this, CreateBoard::class.java)
+            intent.putExtra("boardclass", boardClassName)
             startActivity(intent)
             finish()
         }
