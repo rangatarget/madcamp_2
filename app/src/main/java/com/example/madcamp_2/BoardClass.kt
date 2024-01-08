@@ -56,7 +56,7 @@ class BoardClass : AppCompatActivity() {
         // 다이얼로그 생성
         val alertDialogBuilder = AlertDialog.Builder(this)
             .setView(dialogView)
-            .setTitle("새로운 제목 추가")
+            .setTitle("새로운 게시판 추가")
 
         val alertDialog = alertDialogBuilder.create()
 

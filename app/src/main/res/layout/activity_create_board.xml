@@ -38,7 +38,7 @@
         android:layout_height="30dp"
         android:layout_marginLeft="320dp"
         android:layout_marginTop="7dp"
-        android:text="추가하기"
+        android:text="게시글 추가"
         android:textSize="20sp" />
 
 </RelativeLayout>

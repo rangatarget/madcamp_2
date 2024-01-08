@@ -63,7 +63,7 @@ interface RetroInterface{
 
     @POST("/createboard")
     fun createBoard(
-        @Body jsonparams: Createboard
+        @Body jsonparams: boardcreate
     ) : Call<RegisterResult>
 
 

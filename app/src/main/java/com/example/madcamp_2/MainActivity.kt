@@ -17,14 +17,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val id = MyApplication.prefs.getString("id", "")
-        if(id == "") {
+        val nickname = MyApplication.prefs.getString("nickname", "")
+        if(nickname == "") {
             val intent = Intent(this, Login::class.java)
             startActivity(intent)
             finish()
         }
         //즐겨찾기 게시판 불러오기
-        api.getCheckedBoardClass(Checkedboardclass(id)).enqueue(object: Callback<ArrayList<BoardClassModel>> {
+        api.getCheckedBoardClass(Checkedboardclass(nickname)).enqueue(object: Callback<ArrayList<BoardClassModel>> {
             override fun onResponse(
                 call: Call<ArrayList<BoardClassModel>>,
                 response: Response<ArrayList<BoardClassModel>>

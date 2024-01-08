@@ -39,7 +39,7 @@ data class Comment(
     var context: String
 )
 
-data class Createboard(
+data class boardcreate(
     var author: String,
     var title: String,
     var context: String,
