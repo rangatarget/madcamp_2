@@ -24,14 +24,14 @@
         android:fontFamily="@font/titlefont"
         android:text="전체 게시판 목록"
         android:textStyle="bold"
-        android:textSize="35sp" />
+        android:textSize="45sp" />
 
     <ImageView
         android:id="@+id/arrowback"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         app:srcCompat="@drawable/arrowback" />
 
     <ImageView
@@ -39,7 +39,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         app:srcCompat="@drawable/plus" />
 
