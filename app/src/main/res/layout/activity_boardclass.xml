@@ -10,20 +10,21 @@
         android:id="@+id/rcvBoardClass"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
-        android:fontFamily="@font/boardfont"
+        android:layout_marginTop="60dp"
         android:background="@android:color/background_light"
         tools:ignore="NotSibling" />
+
 
     <TextView
         android:id="@+id/boardclasstitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="-35dp"
-        android:fontFamily="@font/boardfont"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/titlefont"
         android:text="전체 게시판 목록"
-        android:textSize="30sp" />
+        android:textStyle="bold"
+        android:textSize="35sp" />
 
     <ImageView
         android:id="@+id/arrowback"
@@ -35,12 +36,11 @@
 
     <ImageView
         android:id="@+id/buttonadd"
-        android:layout_width="20dp"
-        android:layout_height="22dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="10dp"
         app:srcCompat="@drawable/plus" />
-
 
 </RelativeLayout>

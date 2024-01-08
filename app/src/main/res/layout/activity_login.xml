@@ -20,7 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="ID"
-
         android:layout_below="@id/login"
         android:layout_marginTop="48dp"
         android:inputType="text"/>
@@ -44,22 +43,62 @@
         android:background="@drawable/button_login"
         android:textColor="#FFF"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonsignup"
+    <View
+        android:id="@+id/line"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign Up"
+        android:layout_height="1dp"
+        android:layout_marginTop="15dp"
         android:layout_below="@id/buttonlogin"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/button_login"
-        android:textColor="#FFF"/>
+        android:layout_toStartOf="@id/socialLoginText"
+        android:background="#7E7E7E" />
 
-    <ImageView
-        android:id="@+id/kakaologin"
+    <TextView
+        android:id="@+id/socialLoginText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="460dp"
+        android:text="소셜 계정으로 로그인"
+        android:layout_below="@id/buttonlogin"
+        android:padding="4dp"
+        android:background="#00CCCCCC"
+        android:textColor="#7E7E7E"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_toEndOf="@id/socialLoginText"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/buttonlogin"
+        android:background="#7E7E7E" />
+
+    <ImageView
+        android:id="@+id/kakaologin"
+        android:layout_width="371dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line"
+        android:layout_centerHorizontal="true"
         app:srcCompat="@drawable/kakaologin" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonlogin"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="294dp"
+        android:text="계정이 없으신가요?"
+        android:textSize="15sp"
+        android:textColor="#FF000000" />
+
+    <TextView
+        android:id="@+id/buttonsignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonlogin"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="294dp"
+        android:text="회원가입"
+        android:textSize="15sp"
+        android:textColor="#FF000000" />
 
 </RelativeLayout>
