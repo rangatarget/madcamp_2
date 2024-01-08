@@ -50,15 +50,16 @@ class Login : AppCompatActivity() {
             val loginUser = LoginModel(binding.inputid.text.toString(), binding.inputpassword.text.toString())
             api.login(loginUser).enqueue(object: Callback<LoginResult> {
                 override fun onResponse(call: Call<LoginResult>, response: Response<LoginResult>) {
-                    val user_id = response.body()?.id ?: return
-                    val user_nickname = response.body()?.nickname ?: return
-                    val user_profile = response.body()?.image ?: return
+                    val user = response.body() ?: return
+                    val user_id = user.id
+                    val user_nickname = user.nickname
+                    val user_profile = user.image
                     if(user_id != "") {
                         Toast.makeText(applicationContext, user_nickname + "로그인 성공", Toast.LENGTH_SHORT).show()
                         Log.d("로그인 성공", "user_nickname : " + user_nickname + "  profile_url : ")
                         MyApplication.prefs.setString("id", user_id)
                         MyApplication.prefs.setString("nickname", user_nickname)
-                        MyApplication.prefs.setString("profile", user_profile)
+                        if(user_profile != null) MyApplication.prefs.setString("profile", user_profile)
                         val intent = Intent(this@Login, MainActivity::class.java)
                         startActivity(intent)
                         finish()
@@ -153,6 +154,7 @@ class Login : AppCompatActivity() {
                         Toast.makeText(applicationContext, "계정 생성 완료", Toast.LENGTH_SHORT).show()
                         MyApplication.prefs.setString("nickname", nickname)
                         MyApplication.prefs.setString("id", id)
+                        MyApplication.prefs.setString("profile", profile)
                         val intent = Intent(this@Login, MainActivity::class.java)
                         startActivity(intent)
                         finish()

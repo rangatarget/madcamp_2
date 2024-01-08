@@ -1,7 +1,5 @@
 package com.example.madcamp_2
 
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -23,9 +21,10 @@ class BoardClass : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBoardclassBinding.inflate(layoutInflater)
+        val user_id = MyApplication.prefs.getString("id", "")
         setContentView(binding.root)
 
-        api.getBoardClass().enqueue(object: Callback<ArrayList<BoardClassModel>> {
+        api.getBoardClass(getboardclass(user_id)).enqueue(object: Callback<ArrayList<BoardClassModel>> {
             override fun onResponse(
                 call: Call<ArrayList<BoardClassModel>>,
                 response: Response<ArrayList<BoardClassModel>>
@@ -36,7 +35,7 @@ class BoardClass : AppCompatActivity() {
                 }
                 val layoutManager = LinearLayoutManager(this@BoardClass)
                 binding.rcvBoardClass.layoutManager = layoutManager
-                val adapter = BoardClassAdapter(this@BoardClass, boardList)
+                val adapter = BoardClassAdapter(this@BoardClass, boardList, false, user_id, false)
                 binding.rcvBoardClass.adapter = adapter
             }
 
@@ -72,7 +71,7 @@ class BoardClass : AppCompatActivity() {
         buttonAdd.setOnClickListener {
             val newTitle = editTextTitle.text.toString()
             // TODO: 여기서 새로운 제목을 처리하거나 저장하는 로직을 구현
-            val id = MyApplication.prefs.getString("nickname", "")
+            val id = MyApplication.prefs.getString("id", "")
             api.createBoardClass(Createboardclass(newTitle, id)).enqueue(object: Callback<CreateboardclassResponse> {
                 override fun onResponse(
                     call: Call<CreateboardclassResponse>,
@@ -81,6 +80,9 @@ class BoardClass : AppCompatActivity() {
                     val response: CreateboardclassResponse = response.body() ?: return
                     if(response.success == true){
                         Toast.makeText(applicationContext, "추가되었습니다", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@BoardClass, BoardClass::class.java)
+                        startActivity(intent)
+                        finish()
                     }
                     else{
                         Toast.makeText(applicationContext, "이미 존재하는 게시판 이름입니다.", Toast.LENGTH_SHORT).show()

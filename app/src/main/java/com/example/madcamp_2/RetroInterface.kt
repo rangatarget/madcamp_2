@@ -28,8 +28,10 @@ interface RetroInterface{
         @Body jsonparams: IdCertification
     ) : Call<IdCertificationResult>
 
-    @GET("/boardclass")
-    fun getBoardClass(): Call<ArrayList<BoardClassModel>>
+    @POST("/boardclass")
+    fun getBoardClass(
+        @Body jsonparams: getboardclass
+    ) : Call<ArrayList<BoardClassModel>>
 
     @POST("/boardclass/create")
     fun createBoardClass(
@@ -91,8 +93,20 @@ interface RetroInterface{
         @Body jsonparams: update_post
     ) : Call<RegisterResult>
 
+    @POST("/myboardclass")
+    fun getMyBoardClass(
+        @Body jsonparams: getmyboardclass
+    ) : Call<ArrayList<BoardClassModel>>
 
+    @POST("/deleteboardclass")
+    fun deleteBoardClass(
+        @Body jsonparams: deleteboardclass
+    ) : Call<RegisterResult>
 
+    @POST("/pinboardclass")
+    fun pinBoardClass(
+        @Body jsonparams: pinboardclass
+    ) : Call<RegisterResult>
 
 
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.

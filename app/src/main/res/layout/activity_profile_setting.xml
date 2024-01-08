@@ -5,14 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/arrowback"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="7dp"
-        app:srcCompat="@drawable/arrowback" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -99,5 +91,12 @@
         </LinearLayout>
     </ScrollView>
 
+    <ImageView
+        android:id="@+id/arrowback"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="7dp"
+        app:srcCompat="@drawable/arrowback" />
 
 </RelativeLayout>

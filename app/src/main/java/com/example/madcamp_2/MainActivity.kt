@@ -28,7 +28,8 @@ class MainActivity : AppCompatActivity() {
         }
         //프로필 사진과 닉네임 불러오기
         binding.usernickname.setText(nickname)
-        if(profile != "") Glide.with(this).load(profile).circleCrop().into(binding.userprofile)
+        if(profile != null) Glide.with(this).load(profile).circleCrop().into(binding.userprofile)
+        else Glide.with(this).load(R.drawable.defaultprofile).circleCrop().into(binding.userprofile)
         //즐겨찾기 게시판 불러오기
         api.getCheckedBoardClass(Checkedboardclass(nickname)).enqueue(object: Callback<ArrayList<BoardClassModel>> {
             override fun onResponse(
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 val layoutManager = LinearLayoutManager(this@MainActivity)
                 binding.rcvCheckedBoardClass.layoutManager = layoutManager
-                val adapter = BoardClassAdapter(this@MainActivity, boards)
+                val adapter = BoardClassAdapter(this@MainActivity, boards, false, user_id, true)
                 binding.rcvCheckedBoardClass.adapter = adapter
             }
 
@@ -61,7 +62,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
     }
 
 }

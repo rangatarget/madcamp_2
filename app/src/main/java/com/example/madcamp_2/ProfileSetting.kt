@@ -1,5 +1,6 @@
 package com.example.madcamp_2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -26,6 +27,7 @@ class ProfileSetting : AppCompatActivity() {
         binding.nickname.setText("닉네임 : " + nickname)
         binding.userid.setText("아이디 : " + user_id)
         if(profile != "") Glide.with(this).load(profile).circleCrop().into(binding.profile)
+        else Glide.with(this).load(R.drawable.defaultprofile).circleCrop().into(binding.profile)
 
         binding.userpassword.setOnClickListener{
             Log.d("패스워드 변경 버튼 눌림", "")
@@ -33,7 +35,32 @@ class ProfileSetting : AppCompatActivity() {
         binding.profile.setOnClickListener{
             Log.d("프로필 사진 변경 버튼 눌림", "")
         }
+        api.getMyBoardClass(getmyboardclass(user_id)).enqueue(object:
+            Callback<ArrayList<BoardClassModel>> {
+            override fun onResponse(
+                call: Call<ArrayList<BoardClassModel>>,
+                response: Response<ArrayList<BoardClassModel>>
+            ) {
+                val boards: ArrayList<BoardClassModel> = response.body() ?: return
+                for (board in boards) {
+                    Log.d("내가 만든 게시판 가져오기", "board: $board")
+                }
+                val layoutManager = LinearLayoutManager(this@ProfileSetting)
+                binding.rcvMyBoardClass.layoutManager = layoutManager
+                val adapter = BoardClassAdapter(this@ProfileSetting, boards, true, user_id, false)
+                binding.rcvMyBoardClass.adapter = adapter
+            }
 
+            override fun onFailure(call: Call<ArrayList<BoardClassModel>>, t: Throwable) {
+                Log.d("testt",t.message.toString())
+            }
+        })
+
+        binding.arrowback.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
     }
 }

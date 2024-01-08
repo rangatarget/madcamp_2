@@ -12,7 +12,8 @@ data class BoardModel(
 
 data class BoardClassModel(
     var name: String,
-    var creater: String
+    var creater: String,
+    var pinned: Boolean
 ) : Serializable
 
 data class BoardName(
@@ -26,6 +27,10 @@ data class Createboardclass(
 
 data class CreateboardclassResponse(
     var success: Boolean
+)
+
+data class getboardclass(
+    var user_id: String
 )
 
 data class Checkedboardclass(
@@ -76,8 +81,16 @@ data class update_post(
     var context: String
 )
 
-data class giveStar(
-    var user: String, //user id
-    var boardclass: String, //게사판 이름
-    var star: Boolean //즐겨찾기 등록시 true, 해제시 false
+data class getmyboardclass(
+    var user_id: String
+)
+
+data class deleteboardclass(
+    var name: String
+)
+
+data class pinboardclass(
+    var user_id: String,
+    var pinned: Boolean,
+    var boardclass: String
 )
