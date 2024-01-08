@@ -1,33 +1,38 @@
 package com.example.madcamp_2
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.madcamp_2.databinding.ActivityCreateBoardBinding
+import com.example.madcamp_2.databinding.ActivityUpdatePostBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CreateBoard : AppCompatActivity() {
-    private lateinit var binding: ActivityCreateBoardBinding
+class UpdatePost : AppCompatActivity() {
+    private lateinit var binding: ActivityUpdatePostBinding
     val api = RetroInterface.create()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCreateBoardBinding.inflate(layoutInflater)
+        binding = ActivityUpdatePostBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val receivedIntent = intent
-        val boardClassName = receivedIntent.getStringExtra("boardclass").toString()
-        val user_id = MyApplication.prefs.getString("id", "")
-        val nickname = MyApplication.prefs.getString("nickname", "")
+        val post_id = receivedIntent.getStringExtra("post_id")?.toInt()!!
+        val classname = receivedIntent.getStringExtra("boardclass").toString()
+        val old_posttitle = receivedIntent.getStringExtra("posttitle").toString()
+        val old_postcontext = receivedIntent.getStringExtra("postcontext").toString()
+        binding.posttitle.setText(old_posttitle)
+        binding.postcontext.setText(old_postcontext)
         binding.apply.setOnClickListener {
             val title = binding.posttitle.text.toString()
             val context = binding.postcontext.text.toString()
             Log.d("title", title)
             Log.d("context", context)
-            if(title != "" && context != ""){
-                api.createBoard(boardcreate(user_id, nickname, title, context, boardClassName))
+            if (title != "" && context != "") {
+                api.updatePost(update_post(post_id, title, context))
                     .enqueue(object : Callback<RegisterResult> {
                         override fun onResponse(
                             call: Call<RegisterResult>,
@@ -35,10 +40,10 @@ class CreateBoard : AppCompatActivity() {
                         ) {
                             val response: RegisterResult = response.body() ?: return
                             if (response.message == true) {
-                                Log.d("게시글 생성 성공", title)
-                                Toast.makeText(applicationContext, "게시글 생성 성공", Toast.LENGTH_SHORT)
-                                val intent = Intent(this@CreateBoard, Board::class.java)
-                                intent.putExtra("boardclass", boardClassName)
+                                Log.d("게시글 수정 성공", title)
+                                Toast.makeText(applicationContext, "게시글 수정 성공", Toast.LENGTH_SHORT)
+                                val intent = Intent(this@UpdatePost, Board::class.java)
+                                intent.putExtra("boardclass", classname)
                                 startActivity(intent)
                                 finish()
                             }
@@ -48,12 +53,11 @@ class CreateBoard : AppCompatActivity() {
                             Log.d("testt", t.message.toString())
                         }
                     })
-            }
-            else Toast.makeText(applicationContext, "빈 칸이 있습니다.", Toast.LENGTH_SHORT)
+            } else Toast.makeText(applicationContext, "빈 칸이 있습니다.", Toast.LENGTH_SHORT)
         }
         binding.arrowback.setOnClickListener{
-            val intent = Intent(this@CreateBoard, Board::class.java)
-            intent.putExtra("boardclass", boardClassName)
+            val intent = Intent(this@UpdatePost, Board::class.java)
+            intent.putExtra("boardclass", classname)
             startActivity(intent)
             finish()
         }

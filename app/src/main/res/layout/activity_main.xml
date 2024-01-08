@@ -16,7 +16,7 @@
             app:cardCornerRadius="30dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="60dp" >
+            android:layout_marginTop="80dp" >
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -53,21 +53,49 @@
     </ScrollView>
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/search"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginLeft="310dp"
         android:layout_marginTop="10dp"
         app:srcCompat="@drawable/search" />
 
-    <ImageView
-        android:id="@+id/circularImageView"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="360dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/circular_background"
-        android:scaleType="centerCrop" />
+    <TextView
+        android:id="@+id/userclass"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:gravity="center"
+        android:text = "userclass"
+        android:textSize ="10sp"/>
 
+    <RelativeLayout
+        android:id="@+id/enterProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:id="@+id/userprofile"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/circular_background"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/usernickname"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:text = "nickname"
+            android:textSize ="10sp"/>
+
+    </RelativeLayout>
 </RelativeLayout>

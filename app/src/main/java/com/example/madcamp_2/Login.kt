@@ -50,11 +50,15 @@ class Login : AppCompatActivity() {
             val loginUser = LoginModel(binding.inputid.text.toString(), binding.inputpassword.text.toString())
             api.login(loginUser).enqueue(object: Callback<LoginResult> {
                 override fun onResponse(call: Call<LoginResult>, response: Response<LoginResult>) {
+                    val user_id = response.body()?.id ?: return
                     val user_nickname = response.body()?.nickname ?: return
-                    if(user_nickname != "") {
+                    val user_profile = response.body()?.image ?: return
+                    if(user_id != "") {
                         Toast.makeText(applicationContext, user_nickname + "로그인 성공", Toast.LENGTH_SHORT).show()
                         Log.d("로그인 성공", "user_nickname : " + user_nickname + "  profile_url : ")
+                        MyApplication.prefs.setString("id", user_id)
                         MyApplication.prefs.setString("nickname", user_nickname)
+                        MyApplication.prefs.setString("profile", user_profile)
                         val intent = Intent(this@Login, MainActivity::class.java)
                         startActivity(intent)
                         finish()
@@ -98,6 +102,8 @@ class Login : AppCompatActivity() {
                                     Toast.makeText(applicationContext, nickname + "님 환영합니다", Toast.LENGTH_SHORT).show()
                                     Log.d("카카오 로그인 성공", nickname)
                                     MyApplication.prefs.setString("nickname", nickname)
+                                    MyApplication.prefs.setString("id", userId)
+                                    MyApplication.prefs.setString("profile", profile)
                                     val intent = Intent(this@Login, MainActivity::class.java)
                                     startActivity(intent)
                                     finish()
@@ -146,6 +152,7 @@ class Login : AppCompatActivity() {
                     if(response.message == true){
                         Toast.makeText(applicationContext, "계정 생성 완료", Toast.LENGTH_SHORT).show()
                         MyApplication.prefs.setString("nickname", nickname)
+                        MyApplication.prefs.setString("id", id)
                         val intent = Intent(this@Login, MainActivity::class.java)
                         startActivity(intent)
                         finish()

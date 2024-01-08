@@ -19,7 +19,8 @@ data class LoginModel(
 
 data class LoginResult(
     var nickname : String,
-    var profile : String
+    var image : String,
+    var id : String
 )
 
 data class IdCertification(

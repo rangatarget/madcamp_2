@@ -17,6 +17,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ProfileSetting"
+            android:exported="false" />
+        <activity
+            android:name=".UpdatePost"
+            android:exported="false" />
+        <activity
             android:name=".CreateBoard"
             android:exported="false" />
         <activity

@@ -2,16 +2,17 @@ package com.example.madcamp_2
 
 import android.app.Activity
 import android.content.Intent
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.madcamp_2.databinding.ActivityBoardBinding
 import com.example.madcamp_2.databinding.ActivityPostBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,20 +29,29 @@ class Post : AppCompatActivity() {
         val classname = receivedIntent.getStringExtra("classname").toString()
         val title = receivedIntent.getStringExtra("title").toString()
         val author = receivedIntent.getStringExtra("author").toString()
+        val author_nickname = receivedIntent.getStringExtra("author_nickname").toString()
         val context = receivedIntent.getStringExtra("context").toString()
         val _idtemp = receivedIntent.getStringExtra("_id")?.toInt()
+
+        val user_id = MyApplication.prefs.getString("id", "")
+        val nickname = MyApplication.prefs.getString("nickname", "")
 
         if(_idtemp == null){
             Log.d("_id가 null","")
             val intent = Intent(this@Post, Board::class.java)
+            intent.putExtra("boardclass", classname)
             startActivity(intent)
             finish()
         }
         val _id : Int = _idtemp!!
         Log.d("title : ",title)
         binding.posttitle.text = title
-        binding.author.text = "작성자 : " + author
+        binding.author.text = "작성자 : " + author_nickname
         binding.context.text = context
+        if(user_id != author){
+            binding.deletepost.visibility = View.GONE
+            binding.updatepost.visibility = View.GONE
+        }
 
         api.getComments(getcomment(_id)).enqueue(object: Callback<ArrayList<Comment>> {
             override fun onResponse(
@@ -56,9 +66,8 @@ class Post : AppCompatActivity() {
                 binding.commentnumber.text = "댓글 " + comments.size + "개"
                 val layoutManager = LinearLayoutManager(this@Post)
                 binding.rcvComments.layoutManager = layoutManager
-                val adapter = CommentAdapter(this@Post, comments)
+                val adapter = CommentAdapter(this@Post, comments, user_id, classname, title, author, context, _id)
                 binding.rcvComments.adapter = adapter
-
             }
 
             override fun onFailure(call: Call<ArrayList<Comment>>, t: Throwable) {
@@ -72,11 +81,41 @@ class Post : AppCompatActivity() {
             finish()
         }
         binding.addcomment.setOnClickListener {
-            showDialog()
+            showCommentInput(_id, user_id, nickname, classname, title, author, context)
+        }
+        binding.deletepost.setOnClickListener{
+            Log.d("게시글 삭제 눌림","게시글 id : " + _id.toString())
+            api.deletePost(deletepost(_id)).enqueue(object: Callback<RegisterResult> {
+                override fun onResponse(
+                    call: Call<RegisterResult>,
+                    response: Response<RegisterResult>
+                ) {
+                    val response: RegisterResult = response.body() ?: return
+                    if(response.message == true){
+                        val intent = Intent(this@Post, Board::class.java)
+                        intent.putExtra("boardclass", classname)
+                        startActivity(intent)
+                        finish()
+                    }
+                }
+
+                override fun onFailure(call: Call<RegisterResult>, t: Throwable) {
+                    Log.d("testt",t.message.toString())
+                }
+            })
+        }
+        binding.updatepost.setOnClickListener{
+            val intent = Intent(this@Post, UpdatePost::class.java)
+            intent.putExtra("boardclass", classname)
+            intent.putExtra("post_id", _id.toString())
+            intent.putExtra("posttitle", title)
+            intent.putExtra("postcontext", context)
+            startActivity(intent)
+            finish()
         }
     }
 
-    private fun showDialog() {
+    private fun showCommentInput(_id: Int, user_id: String, nickname: String, classname: String, post_title: String, post_author: String, post_context: String) {
         // LayoutInflater를 사용하여 XML 레이아웃 파일을 View 객체로 변환
         val inflater = LayoutInflater.from(this)
         val dialogView = inflater.inflate(R.layout.createcomment, null)
@@ -89,28 +128,35 @@ class Post : AppCompatActivity() {
         val alertDialog = alertDialogBuilder.create()
 
         // 다이얼로그 내의 버튼과 에디트 텍스트에 대한 처리
-        val editTextTitle = dialogView.findViewById<EditText>(R.id.editTextTitle)
+        val editTextTitle = dialogView.findViewById<EditText>(R.id.editComment)
         val buttonAdd = dialogView.findViewById<Button>(R.id.buttonAdd)
 
         buttonAdd.setOnClickListener {
-            val newTitle = editTextTitle.text.toString()
+            val context = editTextTitle.text.toString()
             // TODO: 여기서 새로운 제목을 처리하거나 저장하는 로직을 구현
-            val id = MyApplication.prefs.getString("nickname", "")
-            api.createBoardClass(Createboardclass(newTitle, id)).enqueue(object: Callback<CreateboardclassResponse> {
+            api.createComment(commentcreate(user_id, nickname, context, _id)).enqueue(object: Callback<RegisterResult> {
                 override fun onResponse(
-                    call: Call<CreateboardclassResponse>,
-                    response: Response<CreateboardclassResponse>
+                    call: Call<RegisterResult>,
+                    response: Response<RegisterResult>
                 ) {
-                    val response: CreateboardclassResponse = response.body() ?: return
-                    if(response.success == true){
-                        Toast.makeText(applicationContext, "추가되었습니다", Toast.LENGTH_SHORT).show()
+                    val response: RegisterResult = response.body() ?: return
+                    if(response.message == true){
+                        Toast.makeText(applicationContext, "댓글이 추가되었습니다", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@Post, Post::class.java)
+                        intent.putExtra("classname", classname)
+                        intent.putExtra("title", post_title)
+                        intent.putExtra("author", post_author)
+                        intent.putExtra("context", post_context)
+                        intent.putExtra("_id", _id.toString())
+                        startActivity(intent)
+                        finish()
                     }
                     else{
-                        Toast.makeText(applicationContext, "이미 존재하는 게시판 이름입니다.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "서버 오류", Toast.LENGTH_SHORT).show()
                     }
                 }
 
-                override fun onFailure(call: Call<CreateboardclassResponse>, t: Throwable) {
+                override fun onFailure(call: Call<RegisterResult>, t: Throwable) {
                     Log.d("testt",t.message.toString())
                 }
             })

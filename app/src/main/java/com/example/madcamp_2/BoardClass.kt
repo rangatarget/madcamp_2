@@ -1,5 +1,6 @@
 package com.example.madcamp_2
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -43,9 +44,13 @@ class BoardClass : AppCompatActivity() {
                 Log.d("testt",t.message.toString())
             }
         })
-
         binding.buttonadd.setOnClickListener {
             showDialog()
+        }
+        binding.arrowback.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
     private fun showDialog() {

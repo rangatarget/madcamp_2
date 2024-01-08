@@ -25,5 +25,23 @@
         android:text="Context"
         android:textSize="15sp" />
 
+    <TextView
+        android:id="@+id/delete"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="370dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="삭제"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/update"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="325dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="수정"
+        android:textSize="20sp" />
+
 
 </RelativeLayout>
