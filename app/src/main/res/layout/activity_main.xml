@@ -29,7 +29,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="즐겨찾기 게시판"
-                    android:textSize="25sp" />
+                    android:fontFamily="@font/titlefont"
+                    android:textStyle="bold"
+                    android:textSize="30sp" />
 
                 <TextView
                     android:id="@+id/moreBoardClass"
@@ -38,6 +40,7 @@
                     android:layout_marginLeft="310dp"
                     android:layout_marginTop="10dp"
                     android:text="더보기"
+                    android:fontFamily="@font/titlefont"
                     android:textSize="15sp" />
 
                 <androidx.recyclerview.widget.RecyclerView

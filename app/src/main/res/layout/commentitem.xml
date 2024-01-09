@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:text="삭제"
         android:fontFamily="@font/titlefont"
-        android:textSize="20sp" />
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/update"
@@ -58,13 +58,13 @@
         android:layout_width="wrap_content"
         android:text="수정"
         android:fontFamily="@font/titlefont"
-        android:textSize="20sp" />
+        android:textSize="15sp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/delete"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="3dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="#DFDFDF" />
