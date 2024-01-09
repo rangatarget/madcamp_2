@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.madcamp_2.databinding.ActivityLoginBinding
@@ -125,24 +127,31 @@ class Login : AppCompatActivity() {
     }
 
     private fun showDialog(id: String, profile: String, nickname: String) {
-        // LayoutInflater를 사용하여 XML 레이아웃 파일을 View 객체로 변환
         val inflater = LayoutInflater.from(this)
         val dialogView = inflater.inflate(R.layout.kakaoregister, null)
 
-        // 다이얼로그 생성
         val alertDialogBuilder = AlertDialog.Builder(this)
             .setView(dialogView)
-            .setTitle("카카오톡으로 계정만들기")
+            .setTitle("카카오톡으로 계정 만들기")
 
         val alertDialog = alertDialogBuilder.create()
 
-        // 다이얼로그 내의 버튼과 에디트 텍스트에 대한 처리
-        val inputclass = dialogView.findViewById<EditText>(R.id.inputclass)
+        // Spinner와 Button 찾기
+        val spinnerClass = dialogView.findViewById<Spinner>(R.id.inputclass)
         val buttonAdd = dialogView.findViewById<Button>(R.id.buttonAdd)
 
+        // Spinner에 사용할 ArrayAdapter 설정
+        val classAdapter = ArrayAdapter.createFromResource(
+            this, R.array.class_array, android.R.layout.simple_spinner_item
+        ).apply {
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
+        spinnerClass.adapter = classAdapter
+
         buttonAdd.setOnClickListener {
-            val classes = inputclass.text.toString()
-            // TODO: 여기서 새로운 제목을 처리하거나 저장하는 로직을 구현
+            val classes = spinnerClass.selectedItem.toString()
+
+            // TODO: 여기서 선택된 분반을 처리하거나 저장하는 로직을 구현
             api.kakaoRegister(kakaoregister(id, profile, classes, nickname)).enqueue(object: Callback<RegisterResult> {
                 override fun onResponse(
                     call: Call<RegisterResult>,
@@ -153,6 +162,7 @@ class Login : AppCompatActivity() {
                         Toast.makeText(applicationContext, "계정 생성 완료", Toast.LENGTH_SHORT).show()
                         MyApplication.prefs.setString("nickname", nickname)
                         MyApplication.prefs.setString("id", id)
+                        MyApplication.prefs.setString("profile", profile)
                         val intent = Intent(this@Login, MainActivity::class.java)
                         startActivity(intent)
                         finish()
@@ -167,11 +177,8 @@ class Login : AppCompatActivity() {
                 }
             })
 
-            // 다이얼로그를 닫음
             alertDialog.dismiss()
         }
 
-        // 다이얼로그 표시
         alertDialog.show()
     }
-}
