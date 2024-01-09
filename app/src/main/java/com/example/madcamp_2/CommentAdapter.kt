@@ -81,7 +81,10 @@ class CommentAdapter(val context: Context, private val itemList: ArrayList<Comme
         holder.writer.text = item.writer_nickname
         holder.comment.text = item.context
         val profile = item.image
-        if(profile != "") Glide.with(context).load(profile).circleCrop().into(holder.profile)
+        if(profile != ""){
+            val profile_bitmap = decodeBase64ToImage(profile)
+            holder.profile.setImageBitmap(profile_bitmap)
+        }
         if(user_id != item.writer) holder.delete.visibility=View.GONE
         if(user_id != item.writer) holder.update.visibility=View.GONE
         if(user_id == item.writer) holder.writer.setTextColor(Color.parseColor("#2051B5"))

@@ -18,6 +18,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".MyBoard"
+            android:exported="false" />
+        <activity
             android:name=".MyBoardClass"
             android:exported="false" />
         <activity

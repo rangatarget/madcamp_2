@@ -28,8 +28,11 @@ class MainActivity : AppCompatActivity() {
         }
         //프로필 사진과 닉네임 불러오기
         binding.usernickname.setText(nickname)
-        Log.d("profile", profile)
-        if(profile != "") Glide.with(this).load(profile).circleCrop().into(binding.userprofile)
+        Log.d("지금 MainActivity고 profile 디코딩한거", profile)
+        if(profile != ""){
+            val profile_bitmap = decodeBase64ToImage(profile)
+            binding.userprofile.setImageBitmap(profile_bitmap)
+        }
         //즐겨찾기 게시판 불러오기
         api.getCheckedBoardClass(Checkedboardclass(nickname)).enqueue(object: Callback<ArrayList<BoardClassModel>> {
             override fun onResponse(

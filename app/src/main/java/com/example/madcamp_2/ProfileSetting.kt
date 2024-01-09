@@ -1,10 +1,15 @@
 package com.example.madcamp_2
 
+import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
@@ -17,11 +22,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.madcamp_2.databinding.ActivityMainBinding
 import com.example.madcamp_2.databinding.ActivityProfileSettingBinding
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.net.URI
-import java.net.URL
+import java.io.IOException
 
 class ProfileSetting : AppCompatActivity() {
     private lateinit var binding: ActivityProfileSettingBinding
@@ -34,10 +45,15 @@ class ProfileSetting : AppCompatActivity() {
         val user_id = MyApplication.prefs.getString("id", "")
         val nickname = MyApplication.prefs.getString("nickname", "")
         val profile = MyApplication.prefs.getString("profile", "")
+        val user_class = MyApplication.prefs.getString("class", "")
 
         binding.nickname.setText("닉네임 : " + nickname)
         binding.userid.setText("아이디 : " + user_id)
-        if(profile != "") Glide.with(this).load(profile).circleCrop().into(binding.profile)
+        binding.userclassview.setText("아이디 : " + user_class)
+        if(profile != ""){
+            val profile_bitmap = decodeBase64ToImage(profile)
+            binding.profile.setImageBitmap(profile_bitmap)
+        }
 
         binding.userpassword.setOnClickListener{
             Log.d("패스워드 변경 버튼 눌림", "")
@@ -58,7 +74,44 @@ class ProfileSetting : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+        binding.logout.setOnClickListener{
+            MyApplication.prefs.setString("id", "")
+            MyApplication.prefs.setString("nickname", "")
+            MyApplication.prefs.setString("profile", "")
+            MyApplication.prefs.setString("class", "")
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        binding.signout.setOnClickListener{
+            api.signOut(signout(user_id)).enqueue(object: Callback<RegisterResult> {
+                override fun onResponse(
+                    call: Call<RegisterResult>,
+                    response: Response<RegisterResult>
+                ) {
+                    val response: RegisterResult = response.body() ?: return
+                    if(response.message == true){
+                        Toast.makeText(applicationContext, "계정 삭제 완료", Toast.LENGTH_SHORT).show()
+                    }
+                    else{
+                        Toast.makeText(applicationContext, "계정 삭제 실패. ERROR", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                override fun onFailure(call: Call<RegisterResult>, t: Throwable) {
+                    Log.d("testt",t.message.toString())
+                }
+            })
+            MyApplication.prefs.setString("id", "")
+            MyApplication.prefs.setString("nickname", "")
+            MyApplication.prefs.setString("profile", "")
+            MyApplication.prefs.setString("class", "")
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        binding.MyPost.setOnClickListener{
 
+        }
     }
 
     private fun showDialog(id: String) {
@@ -146,33 +199,57 @@ class ProfileSetting : AppCompatActivity() {
             when (requestCode) {
                 2000 -> { //gallery
                     val uri = data?.data
-                    val user_id = MyApplication.prefs.getString("id", "")
-                    api.changeProfile(changeprofile(user_id, uri.toString())).enqueue(object: Callback<RegisterResult> {
-                        override fun onResponse(
-                            call: Call<RegisterResult>,
-                            response: Response<RegisterResult>
-                        ) {
-                            val response: RegisterResult = response.body() ?: return
-                            if(response.message == true){
-                                Toast.makeText(applicationContext, "프로필 사진 변경 성공", Toast.LENGTH_SHORT).show()
-                                MyApplication.prefs.setString("profile", uri.toString())
-                                Log.d("profile", uri.toString())
-                                val intent = Intent(this@ProfileSetting, ProfileSetting::class.java)
-                                startActivity(intent)
-                                finish()
-                            }
-                            else{
-                                Toast.makeText(applicationContext, "프로필 사진 변경 실패", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-
-                        override fun onFailure(call: Call<RegisterResult>, t: Throwable) {
-                            Log.d("testt",t.message.toString())
-                        }
-                    })
-
+                    if (uri != null) {
+                        val user_id = MyApplication.prefs.getString("id", "")
+                        uploadFile(this, uri, "http://192.249.29.79:4000/changeprofile", user_id)
+                    }
                 }
             }
         }
     }
+
+    fun uploadFile(context: Context, fileUri: Uri, serverUrl: String, id: String) {
+        val client = OkHttpClient()
+
+        context.contentResolver.openInputStream(fileUri)?.use { inputStream ->
+            val fileBytes = inputStream.readBytes()
+            val fileBody = RequestBody.create("image/jpeg".toMediaTypeOrNull(), fileBytes)
+
+            val requestBody = MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("file", "profile.jpg", fileBody)
+                .addFormDataPart("id", id) // id를 서버에 보내는 코드 추가
+                .build()
+
+            val request = Request.Builder()
+                .url(serverUrl)
+                .post(requestBody)
+                .build()
+
+            client.newCall(request).enqueue(object : okhttp3.Callback {
+                override fun onFailure(call: okhttp3.Call, e: IOException) {
+                    e.printStackTrace() // 네트워크 에러 처리
+                }
+
+                override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
+                    if (!response.isSuccessful) {
+                        throw IOException("Unexpected code $response")
+                    }
+
+                    // 성공적인 응답 처리
+                    val responseBody = response.body?.string()
+
+                    // JSON 파싱
+                    val jsonObject = JSONObject(responseBody)
+                    val image = jsonObject.getString("image") // 서버에서 받은 url
+                    Log.v("응답 결과는?제발", image)
+                    MyApplication.prefs.setString("profile", image)
+                    val intent = Intent(this@ProfileSetting, ProfileSetting::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            })
+        }
+    }
+
 }

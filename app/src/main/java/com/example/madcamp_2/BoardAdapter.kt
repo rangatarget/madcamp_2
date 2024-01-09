@@ -59,7 +59,7 @@ class BoardAdapter(val context: Context, private val itemList: ArrayList<BoardMo
         else{
             holder.contents.text = originalText
         }
-        holder.author.text = "글쓴이 : " + item.author_nickname
+        holder.author.setText("글쓴이 : " + item.author_nickname)
         Log.d("onBindViewHolder",item.title)
         holder.bind(item)
     }

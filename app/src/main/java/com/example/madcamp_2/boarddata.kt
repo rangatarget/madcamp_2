@@ -36,7 +36,6 @@ data class getboardclass(
 data class Checkedboardclass(
     var id: String
 )
-
 data class getcomment(
     var _id: Int
 )
@@ -82,7 +81,7 @@ data class update_post(
     var context: String
 )
 
-data class getmyboardclass(
+data class getmy(
     var user_id: String
 )
 
