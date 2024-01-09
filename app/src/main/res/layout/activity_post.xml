@@ -6,22 +6,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/background_light">
 
-    <TextView
+    <ImageView
         android:id="@+id/deletepost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/delete"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:text = "삭제"
         android:textSize = "20sp" />
 
-    <TextView
+    <ImageView
         android:id="@+id/updatepost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/pencil"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="60dp"
         android:text = "수정"
         android:textSize = "20sp" />
@@ -40,7 +42,7 @@
                 android:id="@+id/author"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="context"
+                android:text="author"
                 android:textSize="15sp" />
 
             <TextView
@@ -59,7 +61,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="댓글개수"
-                    android:textSize="30sp" />
+                    android:fontFamily="@font/titlefont"
+                    android:textSize="25sp" />
 
                 <TextView
                     android:id="@+id/addcomment"
@@ -67,7 +70,9 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="10dp"
+                    android:layout_marginTop="1dp"
                     android:text="댓글달기"
+                    android:fontFamily="@font/titlefont"
                     android:textSize="25sp" />
 
             </RelativeLayout>
@@ -76,6 +81,7 @@
                 android:id="@+id/rcvComments"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
                 android:background="@android:color/background_light"
                 tools:ignore="NotSibling" />
 
