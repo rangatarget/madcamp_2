@@ -18,7 +18,7 @@ interface RetroInterface{
         @Body jsonparams: RegisterModel
     ) : Call<RegisterResult>
 
-    @POST("/login")
+    @POST("/login") //url 받음
     fun login(
         @Body jsonparams: LoginModel
     ) : Call<LoginResult>
@@ -48,7 +48,7 @@ interface RetroInterface{
         @Body jsonparams: Checkedboardclass
     ) : Call<ArrayList<BoardClassModel>>
 
-    @POST("/getcomments")
+    @POST("/getcomments") //url 받음
     fun getComments(
         @Body jsonparams: getcomment
     ) : Call<ArrayList<Comment>>

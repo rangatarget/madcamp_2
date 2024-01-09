@@ -30,6 +30,7 @@ class Post : AppCompatActivity() {
         val title = receivedIntent.getStringExtra("title").toString()
         val author = receivedIntent.getStringExtra("author").toString()
         val author_nickname = receivedIntent.getStringExtra("author_nickname").toString()
+        Log.d("글쓴이 : ", author_nickname)
         val context = receivedIntent.getStringExtra("context").toString()
         val _idtemp = receivedIntent.getStringExtra("_id")?.toInt()
 

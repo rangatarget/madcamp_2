@@ -3,16 +3,19 @@ package com.example.madcamp_2
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,6 +28,7 @@ class CommentAdapter(val context: Context, private val itemList: ArrayList<Comme
         val comment: TextView = itemView.findViewById(R.id.context)
         val delete: TextView = itemView.findViewById(R.id.delete)
         val update: TextView = itemView.findViewById(R.id.update)
+        val profile: ImageView = itemView.findViewById(R.id.userprofile)
 
         fun bind(item: Comment){
             delete.setOnClickListener {
@@ -76,8 +80,12 @@ class CommentAdapter(val context: Context, private val itemList: ArrayList<Comme
         val item = itemList[position]
         holder.writer.text = item.writer_nickname
         holder.comment.text = item.context
+        val profile = item.image
+        if(profile != "") Glide.with(context).load(profile).circleCrop().into(holder.profile)
         if(user_id != item.writer) holder.delete.visibility=View.GONE
         if(user_id != item.writer) holder.update.visibility=View.GONE
+        if(user_id == item.writer) holder.writer.setTextColor(Color.parseColor("#2051B5"))
+
         holder.bind(item)
     }
 

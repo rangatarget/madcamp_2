@@ -1,6 +1,5 @@
 package com.example.madcamp_2
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,11 +7,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.net.toUri
 import com.example.madcamp_2.databinding.ActivityLoginBinding
 import com.kakao.sdk.common.util.Utility
 import com.kakao.sdk.user.UserApiClient
@@ -51,8 +48,7 @@ class Login : AppCompatActivity() {
                 }
             }
 
-            val loginUser =
-                LoginModel(binding.inputid.text.toString(), binding.inputpassword.text.toString())
+            val loginUser = LoginModel(binding.inputid.text.toString(), binding.inputpassword.text.toString())
             api.login(loginUser).enqueue(object : Callback<LoginResult> {
                 override fun onResponse(call: Call<LoginResult>, response: Response<LoginResult>) {
                     val user = response.body() ?: return

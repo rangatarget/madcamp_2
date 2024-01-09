@@ -19,7 +19,7 @@ data class LoginModel(
 
 data class LoginResult(
     var nickname : String,
-    var image : String?,
+    var image : String,
     var id : String
 )
 
