@@ -13,38 +13,45 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardElevation="4dp"
-            app:cardCornerRadius="30dp"
+            app:cardCornerRadius="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="80dp" >
+            android:layout_marginTop="300dp" >
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:padding="10dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/CheckedBoardClass"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="2dp"
                     android:text="즐겨찾기 게시판"
-                    android:textSize="25sp" />
+                    android:fontFamily="@font/titlefont"
+                    android:textStyle="bold"
+                    android:textSize="30sp" />
 
                 <TextView
                     android:id="@+id/moreBoardClass"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="310dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="11dp"
                     android:text="더보기"
+                    android:fontFamily="@font/titlefont"
                     android:textSize="15sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcvCheckedBoardClass"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="45dp"
+                    android:layout_marginLeft="5dp"
                     android:background="@android:color/background_light"
                     tools:ignore="NotSibling" />
 
@@ -53,29 +60,41 @@
     </ScrollView>
 
     <ImageView
-        android:id="@+id/search"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="310dp"
-        android:layout_marginTop="10dp"
-        app:srcCompat="@drawable/search" />
+        android:id="@+id/userp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/applogo" />
+
+    <TextView
+        android:id="@+id/madcamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="25dp"
+        android:gravity="center"
+        android:text = "몰입캠프"
+        android:fontFamily="@font/titlefont"
+        android:textStyle="bold"
+        android:textSize ="35sp"/>
 
     <TextView
         android:id="@+id/userclass"
-        android:layout_width="50dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="45dp"
+        android:layout_below="@+id/madcamp"
         android:gravity="center"
-        android:text = "userclass"
-        android:textSize ="10sp"/>
+        android:text = "1분반"
+        android:fontFamily="@font/titlefont"
+        android:textStyle="bold"
+        android:textSize ="25sp"/>
 
     <RelativeLayout
         android:id="@+id/enterProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="10dp">
 
 
@@ -83,21 +102,23 @@
             android:id="@+id/userprofile"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:scaleType="centerCrop"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="18dp"
             android:src="@drawable/defaultprofile" />
-
 
         <TextView
             android:id="@+id/usernickname"
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/titlefont"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
             android:gravity="center"
             android:text = "nickname"
-            android:textSize ="13sp"/>
+            android:textStyle="bold"
+            android:textSize ="20sp"/>
 
     </RelativeLayout>
 </RelativeLayout>
