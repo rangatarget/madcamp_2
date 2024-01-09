@@ -44,7 +44,8 @@ data class Comment(
     var writer: String,
     var context: String,
     var writer_nickname: String,
-    var _id: Int
+    var _id: Int,
+    var image: String
 )
 
 data class boardcreate(

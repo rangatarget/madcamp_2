@@ -133,8 +133,10 @@ class ProfileSetting : AppCompatActivity() {
     }
 
     private fun performActionWithPermissions_Gallery() {
-        val intent = Intent(Intent.ACTION_GET_CONTENT)
-        intent.type = "image/*"
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = "image/*" // 이미지 파일만 표시하도록 설정합니다.
+        }
         startActivityForResult(intent, 2000)
     }
 
@@ -154,6 +156,7 @@ class ProfileSetting : AppCompatActivity() {
                             if(response.message == true){
                                 Toast.makeText(applicationContext, "프로필 사진 변경 성공", Toast.LENGTH_SHORT).show()
                                 MyApplication.prefs.setString("profile", uri.toString())
+                                Log.d("profile", uri.toString())
                                 val intent = Intent(this@ProfileSetting, ProfileSetting::class.java)
                                 startActivity(intent)
                                 finish()
