@@ -1,25 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="65dp"
     android:orientation="vertical">
 
     <ImageView
         android:id="@+id/pin"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/pin" />
 
     <TextView
         android:id="@+id/nameTextView"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginLeft="50dp"
-        android:textSize="20sp"
+        android:layout_marginLeft="65dp"
+        android:textSize="27sp"
         android:gravity="center_vertical"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/titlefont"
         android:text="Name" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="#DFDFDF" />
 
 </RelativeLayout>

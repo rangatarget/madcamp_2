@@ -76,6 +76,16 @@
             app:layout_constraintTop_toTopOf="@id/inputid"
             app:layout_constraintVertical_bias="0.0" />
 
+        <ImageView
+            android:id="@+id/checkImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/idcert"
+            app:layout_constraintStart_toEndOf="@id/idcert"
+            app:layout_constraintTop_toTopOf="@id/idcert"
+            android:visibility="gone"/>
+
         <TextView
             android:id="@+id/password"
             android:layout_width="wrap_content"

@@ -101,11 +101,12 @@
             android:id="@+id/usernickname"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/titlefont"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
             android:gravity="center"
             android:text = "nickname"
-            android:textSize ="10sp"/>
+            android:textSize ="13sp"/>
 
     </RelativeLayout>
 </RelativeLayout>
