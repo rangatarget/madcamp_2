@@ -21,6 +21,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.net.URI
+import java.net.URL
 
 class ProfileSetting : AppCompatActivity() {
     private lateinit var binding: ActivityProfileSettingBinding
@@ -100,7 +101,7 @@ class ProfileSetting : AppCompatActivity() {
                         Toast.makeText(applicationContext, "비밀번호 변경 완료", Toast.LENGTH_SHORT).show()
                     }
                     else{
-                        Toast.makeText(applicationContext, "비밀번호가 다릅니다.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "기존 비밀번호가 다릅니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -143,8 +144,8 @@ class ProfileSetting : AppCompatActivity() {
             when (requestCode) {
                 2000 -> { //gallery
                     val uri = data?.data
-                    val url = URI(uri.toString()).toURL()
-                    api.changeProfile(changeprofile(url.toString())).enqueue(object: Callback<RegisterResult> {
+                    val user_id = MyApplication.prefs.getString("id", "")
+                    api.changeProfile(changeprofile(user_id, uri.toString())).enqueue(object: Callback<RegisterResult> {
                         override fun onResponse(
                             call: Call<RegisterResult>,
                             response: Response<RegisterResult>
@@ -152,7 +153,7 @@ class ProfileSetting : AppCompatActivity() {
                             val response: RegisterResult = response.body() ?: return
                             if(response.message == true){
                                 Toast.makeText(applicationContext, "프로필 사진 변경 성공", Toast.LENGTH_SHORT).show()
-                                MyApplication.prefs.setString("profile", url.toString())
+                                MyApplication.prefs.setString("profile", uri.toString())
                                 val intent = Intent(this@ProfileSetting, ProfileSetting::class.java)
                                 startActivity(intent)
                                 finish()

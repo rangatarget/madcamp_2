@@ -19,7 +19,7 @@ data class LoginModel(
 
 data class LoginResult(
     var nickname : String,
-    var image : String,
+    var image : String?,
     var id : String
 )
 
@@ -49,5 +49,6 @@ data class changepassword(
 )
 
 data class changeprofile(
+    var id: String,
     var url: String
 )

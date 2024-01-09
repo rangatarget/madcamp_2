@@ -12,6 +12,7 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.net.toUri
 import com.example.madcamp_2.databinding.ActivityLoginBinding
 import com.kakao.sdk.common.util.Utility
 import com.kakao.sdk.user.UserApiClient
@@ -67,10 +68,7 @@ class Login : AppCompatActivity() {
                         Log.d("로그인 성공", "user_nickname : " + user_nickname + "  profile_url : ")
                         MyApplication.prefs.setString("id", user_id)
                         MyApplication.prefs.setString("nickname", user_nickname)
-                        if (user_profile != null) MyApplication.prefs.setString(
-                            "profile",
-                            user_profile
-                        )
+                        if (user_profile != null) MyApplication.prefs.setString("profile", user_profile)
                         val intent = Intent(this@Login, MainActivity::class.java)
                         startActivity(intent)
                         finish()
