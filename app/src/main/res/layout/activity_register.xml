@@ -80,10 +80,9 @@
             android:id="@+id/checkImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="@id/idcert"
-            app:layout_constraintStart_toEndOf="@id/idcert"
-            app:layout_constraintTop_toTopOf="@id/idcert"
+            app:layout_constraintEnd_toStartOf="@id/idcert"
+            app:layout_constraintTop_toTopOf="@id/inputid"
+            android:layout_marginTop="4dp"
             android:visibility="gone"/>
 
         <TextView

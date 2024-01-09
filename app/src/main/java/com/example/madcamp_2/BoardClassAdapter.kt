@@ -70,7 +70,7 @@ class BoardClassAdapter(val context: Context, private val itemList: ArrayList<Bo
                     ) {
                         val result: RegisterResult = response.body() ?: return
                         if(result.message == true){
-                            val intent = Intent(context, ProfileSetting::class.java)
+                            val intent = Intent(context, MyBoardClass::class.java)
                             itemView.context.startActivity(intent)
                             (context as Activity).finish()
                         }

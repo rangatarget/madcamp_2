@@ -41,3 +41,13 @@ data class kakaoregister(
     var classes: String,
     var nickname: String
 )
+
+data class changepassword(
+    var id: String,
+    var oldpw: String,
+    var newpw: String
+)
+
+data class changeprofile(
+    var url: String
+)
