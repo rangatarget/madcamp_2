@@ -18,6 +18,7 @@
         android:layout_below="@id/editTextTitle"
         android:text="추가"
         android:layout_alignParentEnd="true"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/button_login"
         android:layout_marginRight="10dp"
         android:textColor="#FFFFFF"/>

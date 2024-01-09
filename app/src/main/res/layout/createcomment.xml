@@ -18,6 +18,7 @@
         android:layout_below="@id/editComment"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
+        android:layout_marginBottom="15dp"
         android:text="댓글 달기"
         android:background="@drawable/button_login"
         android:layout_alignParentEnd="true"
