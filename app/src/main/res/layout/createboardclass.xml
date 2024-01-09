@@ -11,13 +11,14 @@
         android:hint="제목을 입력하세요"
         android:layout_margin="16dp"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
         android:layout_below="@id/editTextTitle"
         android:text="추가"
-        android:layout_marginTop="8dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"/>
+        android:background="@drawable/button_login"
+        android:layout_marginRight="10dp"
+        android:textColor="#FFFFFF"/>
 </RelativeLayout>
