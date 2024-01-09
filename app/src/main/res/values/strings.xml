@@ -1,12 +1,9 @@
 <resources>
-    <string name="app_name">madcamp_2</string>
-    <string name="title_activity_edit_password">EditPassword</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="app_name">몰입캠퍼스</string>
+    <string-array name="class_array">
+        <item>1분반</item>
+        <item>2분반</item>
+        <item>3분반</item>
+        <item>4분반</item>
+    </string-array>
 </resources>
