@@ -14,11 +14,6 @@
         android:layout_marginTop="20dp"
         app:srcCompat="@drawable/arrowback" />
 
-    <!-- 프로필 설정 텍스트 -->
-
-
-    <!-- 스크롤뷰 안의 내용 -->
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,14 +45,30 @@
                 android:layout_height="150dp"
                 android:layout_gravity="center_horizontal" />
 
-            <TextView
-                android:id="@+id/nickname"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/titlefont"
-                android:text="nickname"
-                android:textSize="25sp"/>
+                android:layout_below="@id/profile"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:id="@+id/nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/titlefont"
+                    android:text="nickname"
+                    android:textSize="25sp"/>
+
+                <ImageView
+                    android:id="@+id/editIcon"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@id/nickname"
+                    android:src="@drawable/editnickname" />
+            </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -181,6 +192,35 @@
                 android:fontFamily="@font/titlefont"
                 android:textSize="25sp" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#D3D3D3"
+                android:layout_below="@id/viewid"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"/>
+
+            <TextView
+                android:id="@+id/logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="#  로그아웃"
+                android:fontFamily="@font/titlefont"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/signout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_gravity="center_horizontal"
+                android:text="회원탈퇴"
+                android:fontFamily="@font/titlefont"
+                android:textColor="#707070"
+                android:textSize="20sp" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
