@@ -63,3 +63,8 @@ data class UrlResult(
 data class signout(
     var id: String
 )
+
+data class editnick(
+    var id: String,
+    var nickname: String
+)

@@ -33,49 +33,93 @@
         android:layout_height="match_parent"
         android:layout_marginTop="50dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/author"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="author"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/context"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="context"
-                android:textSize="25sp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="25dp">
+
+                <ImageView
+                    android:id="@+id/authorprofile"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/defaultprofile" />
 
                 <TextView
-                    android:id="@+id/commentnumber"
+                    android:id="@+id/author"
+                    android:fontFamily="@font/titlefont"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="댓글개수"
-                    android:fontFamily="@font/titlefont"
-                    android:textSize="25sp" />
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/authorprofile"
+                    android:text="author"
+                    android:textStyle="bold"
+                    android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/addcomment"
+                    android:id="@+id/posttitle"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="1dp"
-                    android:text="댓글달기"
+                    android:layout_below="@id/authorprofile"
+                    android:textSize="40sp"
+                    android:text="Title"
                     android:fontFamily="@font/titlefont"
-                    android:textSize="25sp" />
+                    android:textStyle="bold"/>
 
+                <TextView
+                    android:id="@+id/context"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/posttitle"
+                    android:text="context"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/titlefont"
+                    android:textSize="30sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/context">
+
+                    <TextView
+                        android:id="@+id/commentnumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/titlefont"
+                        android:text="댓글개수"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/addcomment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="댓글달기"
+                        android:fontFamily="@font/titlefont"
+                        android:textSize="20sp" />
+                </RelativeLayout>
             </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#A1A1A1"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcvComments"
@@ -85,19 +129,8 @@
                 android:background="@android:color/background_light"
                 tools:ignore="NotSibling" />
 
-        </LinearLayout>
-
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </ScrollView>
-
-    <TextView
-        android:id="@+id/posttitle"
-        android:layout_marginLeft="45dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="33sp"
-        android:text="Title"
-        android:fontFamily="@font/loginfont"/>
-
     <ImageView
         android:id="@+id/arrowback"
         android:layout_width="30dp"

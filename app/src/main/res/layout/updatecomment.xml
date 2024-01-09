@@ -19,6 +19,7 @@
         android:text="댓글 수정"
         android:layout_alignParentRight="true"
         android:background="@drawable/button_login"
+        android:layout_marginBottom="15dp"
         android:layout_marginRight="10dp"
         android:layout_alignParentEnd="true"
         android:textColor="#FFFFFF"/>

@@ -31,15 +31,17 @@ class MainActivity : AppCompatActivity() {
         Log.d("지금 MainActivity고 profile 디코딩한거", profile)
         if(profile != ""){
             val profile_bitmap = decodeBase64ToImage(profile)
+            Glide.with(this@MainActivity).load(profile_bitmap).circleCrop().into(binding.userprofile)
             binding.userprofile.setImageBitmap(profile_bitmap)
         }
         //즐겨찾기 게시판 불러오기
-        api.getCheckedBoardClass(Checkedboardclass(nickname)).enqueue(object: Callback<ArrayList<BoardClassModel>> {
+        api.getCheckedBoardClass(Checkedboardclass(user_id)).enqueue(object: Callback<ArrayList<BoardClassModel>> {
             override fun onResponse(
                 call: Call<ArrayList<BoardClassModel>>,
                 response: Response<ArrayList<BoardClassModel>>
             ) {
                 val boards: ArrayList<BoardClassModel> = response.body() ?: return
+                Log.d("즐겨찾기게시판가져오기", boards.size.toString())
                 for (board in boards) {
                     Log.d("즐겨찾기게시판가져오기", "board: $board")
                 }
@@ -60,7 +62,7 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
         //프로필 버튼
-        binding.enterProfile.setOnClickListener{
+        binding.userprofile.setOnClickListener{
             val intent = Intent(this, ProfileSetting::class.java)
             startActivity(intent)
             finish()

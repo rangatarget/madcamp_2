@@ -21,6 +21,9 @@ class BoardAdapter(val context: Context, private val itemList: ArrayList<BoardMo
         fun bind(item: BoardModel) {
             itemView.setOnClickListener {
                 Log.d("게시물 눌림", item.title)
+                if(classname ==""){
+                    return@setOnClickListener
+                }
                 val intent = Intent(context, Post::class.java)
                 intent.putExtra("classname", classname)
                 intent.putExtra("title", item.title)

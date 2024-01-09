@@ -43,14 +43,21 @@ class CommentAdapter(val context: Context, private val itemList: ArrayList<Comme
                         val response: RegisterResult = response.body() ?: return
                         if(response.message == true){
                             Toast.makeText(context, "댓글이 삭제되었습니다", Toast.LENGTH_SHORT).show()
-                            val intent = Intent(context as Activity, Post::class.java)
-                            intent.putExtra("classname", classname)
-                            intent.putExtra("title", post_title)
-                            intent.putExtra("author", post_author)
-                            intent.putExtra("context", post_context)
-                            intent.putExtra("_id", _id.toString())
-                            (context as Activity).startActivity(intent)
-                            context.finish()
+                            if(classname == ""){
+                                val intent = Intent(context as Activity, MyComment::class.java)
+                                (context as Activity).startActivity(intent)
+                                context.finish()
+                            }
+                            else{
+                                val intent = Intent(context as Activity, Post::class.java)
+                                intent.putExtra("classname", classname)
+                                intent.putExtra("title", post_title)
+                                intent.putExtra("author", post_author)
+                                intent.putExtra("context", post_context)
+                                intent.putExtra("_id", _id.toString())
+                                (context as Activity).startActivity(intent)
+                                context.finish()
+                            }
                         }
                         else{
                             Toast.makeText(context, "서버 오류", Toast.LENGTH_SHORT).show()
@@ -81,13 +88,13 @@ class CommentAdapter(val context: Context, private val itemList: ArrayList<Comme
         holder.writer.text = item.writer_nickname
         holder.comment.text = item.context
         val profile = item.image
-        if(profile != ""){
+        if(profile != null){
             val profile_bitmap = decodeBase64ToImage(profile)
-            holder.profile.setImageBitmap(profile_bitmap)
+            Glide.with(context).load(profile_bitmap).circleCrop().into(holder.profile)
         }
-        if(user_id != item.writer) holder.delete.visibility=View.GONE
-        if(user_id != item.writer) holder.update.visibility=View.GONE
-        if(user_id == item.writer) holder.writer.setTextColor(Color.parseColor("#2051B5"))
+        if(user_id != item.writer || classname == "") holder.delete.visibility=View.GONE
+        if(user_id != item.writer || classname == "") holder.update.visibility=View.GONE
+        if(user_id == item.writer || classname == "") holder.writer.setTextColor(Color.parseColor("#2051B5"))
 
         holder.bind(item)
     }
@@ -128,14 +135,21 @@ class CommentAdapter(val context: Context, private val itemList: ArrayList<Comme
                     val response: RegisterResult = response.body() ?: return
                     if(response.message == true){
                         Toast.makeText(context, "댓글이 수정되었습니다", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(context as Activity, Post::class.java)
-                        intent.putExtra("classname", classname)
-                        intent.putExtra("title", post_title)
-                        intent.putExtra("author", post_author)
-                        intent.putExtra("context", post_context)
-                        intent.putExtra("_id", board_id.toString())
-                        (context as Activity).startActivity(intent)
-                        context.finish()
+                        if(classname == ""){
+                            val intent = Intent(context as Activity, MyComment::class.java)
+                            (context as Activity).startActivity(intent)
+                            context.finish()
+                        }
+                        else{
+                            val intent = Intent(context as Activity, Post::class.java)
+                            intent.putExtra("classname", classname)
+                            intent.putExtra("title", post_title)
+                            intent.putExtra("author", post_author)
+                            intent.putExtra("context", post_context)
+                            intent.putExtra("_id", _id.toString())
+                            (context as Activity).startActivity(intent)
+                            context.finish()
+                        }
                     }
                     else{
                         Toast.makeText(context, "서버 오류", Toast.LENGTH_SHORT).show()

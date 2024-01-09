@@ -82,7 +82,7 @@ data class update_post(
 )
 
 data class getmy(
-    var user_id: String
+    var id: String
 )
 
 data class deleteboardclass(
@@ -93,4 +93,8 @@ data class pinboardclass(
     var user_id: String,
     var pinned: Boolean,
     var boardclass: String
+)
+
+data class onlyimage(
+    var image: String
 )

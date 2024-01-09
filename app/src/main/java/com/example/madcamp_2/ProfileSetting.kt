@@ -48,11 +48,11 @@ class ProfileSetting : AppCompatActivity() {
         val user_class = MyApplication.prefs.getString("class", "")
 
         binding.nickname.setText("닉네임 : " + nickname)
-        binding.userid.setText("아이디 : " + user_id)
-        binding.userclassview.setText("아이디 : " + user_class)
+        binding.userid.setText(user_id)
+        binding.userclassview.setText(user_class)
         if(profile != ""){
             val profile_bitmap = decodeBase64ToImage(profile)
-            binding.profile.setImageBitmap(profile_bitmap)
+            Glide.with(this@ProfileSetting).load(profile_bitmap).circleCrop().into(binding.profile)
         }
 
         binding.userpassword.setOnClickListener{
@@ -110,7 +110,17 @@ class ProfileSetting : AppCompatActivity() {
             finish()
         }
         binding.MyPost.setOnClickListener{
-
+            val intent = Intent(this, MyBoard::class.java)
+            startActivity(intent)
+            finish()
+        }
+        binding.MyComment.setOnClickListener{
+            val intent = Intent(this, MyComment::class.java)
+            startActivity(intent)
+            finish()
+        }
+        binding.editIcon.setOnClickListener{
+            editNickName(user_id)
         }
     }
 
@@ -139,9 +149,11 @@ class ProfileSetting : AppCompatActivity() {
 
             if(oldpw == newpw){
                 Toast.makeText(applicationContext, "기존과 같은 비밀번호", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
             else if(newpw != newpwcert){
                 Toast.makeText(applicationContext, "새 비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
             // TODO: 여기서 새로운 제목을 처리하거나 저장하는 로직을 구현
             api.changePassword(changepassword(id, oldpw, newpw)).enqueue(object: Callback<RegisterResult> {
@@ -155,6 +167,57 @@ class ProfileSetting : AppCompatActivity() {
                     }
                     else{
                         Toast.makeText(applicationContext, "기존 비밀번호가 다릅니다.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<RegisterResult>, t: Throwable) {
+                    Log.d("testt",t.message.toString())
+                }
+            })
+
+            // 다이얼로그를 닫음
+            alertDialog.dismiss()
+        }
+
+        // 다이얼로그 표시
+        alertDialog.show()
+    }
+
+    private fun editNickName(id: String) {
+        // LayoutInflater를 사용하여 XML 레이아웃 파일을 View 객체로 변환
+        val inflater = LayoutInflater.from(this)
+        val dialogView = inflater.inflate(R.layout.changenickname, null)
+
+        // 다이얼로그 생성
+        val alertDialogBuilder = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setTitle("닉네임 변경")
+
+        val alertDialog = alertDialogBuilder.create()
+
+        // 다이얼로그 내의 버튼과 에디트 텍스트에 대한 처리
+        val newnickname = dialogView.findViewById<EditText>(R.id.newnickname)
+        val editbutton = dialogView.findViewById<Button>(R.id.editbutton)
+
+        editbutton.setOnClickListener {
+            val newname = newnickname.text.toString()
+
+            // TODO: 여기서 새로운 제목을 처리하거나 저장하는 로직을 구현
+            api.editNickName(editnick(id, newname)).enqueue(object: Callback<RegisterResult> {
+                override fun onResponse(
+                    call: Call<RegisterResult>,
+                    response: Response<RegisterResult>
+                ) {
+                    val response: RegisterResult = response.body() ?: return
+                    if(response.message == true){
+                        Toast.makeText(applicationContext, "닉네임 변경 완료", Toast.LENGTH_SHORT).show()
+                        MyApplication.prefs.setString("nickname", newname)
+                        val intent = Intent(this@ProfileSetting, ProfileSetting::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                    else{
+                        Toast.makeText(applicationContext, "ERROR", Toast.LENGTH_SHORT).show()
                     }
                 }
 

@@ -5,22 +5,24 @@
     android:layout_height="wrap_content">
 
     <EditText
-        android:id="@+id/editComment"
+        android:id="@+id/newnickname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="내용을 입력하세요"
-        android:layout_margin="16dp"/>
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:hint="새 닉네임을 입력하세요." />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonAdd"
+        android:id="@+id/editbutton"
         android:layout_width="80dp"
         android:layout_height="30dp"
-        android:layout_below="@id/editComment"
+        android:layout_below="@id/newnickname"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="15dp"
-        android:text="댓글 달기"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/button_login"
-        android:layout_alignParentEnd="true"
+        android:text="확인"
         android:textColor="#FFFFFF" />
 </RelativeLayout>

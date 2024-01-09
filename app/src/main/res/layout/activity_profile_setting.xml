@@ -73,8 +73,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="60dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp">
 
@@ -83,6 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="#  사용자 아이디"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/titlefont"
                     android:textSize="25sp"/>
 
@@ -93,6 +94,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="8dp"
                     android:fontFamily="@font/titlefont"
+                    android:layout_marginTop="10dp"
                     android:text="userid"
                     android:textColor="#8A8A8A"
                     android:textSize="25sp" />
@@ -109,14 +111,14 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_height="45dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:text="#  나의 분반"
                     android:fontFamily="@font/titlefont"
                     android:textSize="25sp"/>
@@ -129,6 +131,7 @@
                     android:layout_marginRight="8dp"
                     android:fontFamily="@font/titlefont"
                     android:text="userclass"
+                    android:layout_marginTop="10dp"
                     android:textColor="#8A8A8A"
                     android:textSize="25sp" />
             </RelativeLayout>
@@ -151,6 +154,8 @@
                 android:text="#  비밀번호 변경"
                 android:fontFamily="@font/titlefont"
                 android:textSize="25sp"/>
+
+
 
             <View
                 android:layout_width="match_parent"
@@ -232,7 +237,7 @@
                 android:id="@+id/signout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="50dp"
                 android:layout_gravity="center_horizontal"
                 android:text="회원탈퇴"
                 android:fontFamily="@font/titlefont"

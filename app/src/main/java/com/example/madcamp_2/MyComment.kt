@@ -8,38 +8,39 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.madcamp_2.databinding.ActivityMainBinding
 import com.example.madcamp_2.databinding.ActivityMyBoardBinding
 import com.example.madcamp_2.databinding.ActivityMyBoardClassBinding
+import com.example.madcamp_2.databinding.ActivityMyCommentBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MyBoard : AppCompatActivity() {
-    private lateinit var binding: ActivityMyBoardBinding
+class MyComment : AppCompatActivity() {
+    private lateinit var binding: ActivityMyCommentBinding
     val api = RetroInterface.create()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMyBoardBinding.inflate(layoutInflater)
+        binding = ActivityMyCommentBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val user_id = MyApplication.prefs.getString("id", "")
         val nickname = MyApplication.prefs.getString("nickname", "")
         val profile = MyApplication.prefs.getString("profile", "")
 
-        api.getMyBoard(getmy(user_id)).enqueue(object: Callback<ArrayList<BoardModel>> {
+        api.getMyComment(getmy(user_id)).enqueue(object: Callback<ArrayList<Comment>> {
             override fun onResponse(
-                call: Call<ArrayList<BoardModel>>,
-                response: Response<ArrayList<BoardModel>>
+                call: Call<ArrayList<Comment>>,
+                response: Response<ArrayList<Comment>>
             ) {
-                val boards: ArrayList<BoardModel> = response.body() ?: return
-                Log.d("게시물",  boards.size.toString() + " " + user_id)
+                val boards: ArrayList<Comment> = response.body() ?: return
                 for (board in boards) {
-                    Log.d("게시물가져오기", "board: $board")
+                    Log.d("댓글가져오기", "board: $board")
                 }
-                val layoutManager = LinearLayoutManager(this@MyBoard)
+                val layoutManager = LinearLayoutManager(this@MyComment)
                 binding.rcvBoard.layoutManager = layoutManager
-                val adapter = BoardAdapter(this@MyBoard, boards, "")
+                val adapter = CommentAdapter(this@MyComment, boards, user_id, "", "", "", "", 0)
                 binding.rcvBoard.adapter = adapter
+
             }
 
-            override fun onFailure(call: Call<ArrayList<BoardModel>>, t: Throwable) {
+            override fun onFailure(call: Call<ArrayList<Comment>>, t: Throwable) {
                 Log.d("testt",t.message.toString())
             }
         })

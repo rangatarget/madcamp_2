@@ -125,15 +125,25 @@ interface RetroInterface{
         @Body jsonparams: signout
     ) : Call<RegisterResult>
 
-    @POST("myboard")
+    @POST("/myboard")
     fun getMyBoard(
         @Body jsonparams: getmy
     ) : Call<ArrayList<BoardModel>>
 
-    @POST("mycomment")
+    @POST("/mycomment")
     fun getMyComment(
         @Body jsonparams: getmy
     ) : Call<ArrayList<Comment>>
+
+    @POST("/editnickname")
+    fun editNickName(
+        @Body jsonparams: editnick
+    ) : Call<RegisterResult>
+
+    @POST("/getauthorimage")
+    fun getAuthorImage(
+        @Body jsonparams: getmy
+    ) : Call<onlyimage>
 
 
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.

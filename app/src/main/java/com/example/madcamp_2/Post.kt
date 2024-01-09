@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.madcamp_2.databinding.ActivityPostBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,7 +31,6 @@ class Post : AppCompatActivity() {
         val title = receivedIntent.getStringExtra("title").toString()
         val author = receivedIntent.getStringExtra("author").toString()
         val author_nickname = receivedIntent.getStringExtra("author_nickname").toString()
-        Log.d("글쓴이 : ", author_nickname)
         val context = receivedIntent.getStringExtra("context").toString()
         val _idtemp = receivedIntent.getStringExtra("_id")?.toInt()
 
@@ -47,8 +47,28 @@ class Post : AppCompatActivity() {
         val _id : Int = _idtemp!!
         Log.d("title : ",title)
         binding.posttitle.text = title
-        binding.author.text = "작성자 : " + author_nickname
+        binding.author.text = author_nickname
         binding.context.text = context
+
+        api.getAuthorImage(getmy(author)).enqueue(object: Callback<onlyimage> {
+            override fun onResponse(
+                call: Call<onlyimage>,
+                response: Response<onlyimage>
+            ) {
+                val response: onlyimage = response.body() ?: return
+                if(response.image != null){
+                    val profile_bitmap = decodeBase64ToImage(response.image)
+                    Glide.with(this@Post).load(profile_bitmap).circleCrop().into(binding.authorprofile)
+                }
+            }
+
+            override fun onFailure(call: Call<onlyimage>, t: Throwable) {
+                Log.d("testt",t.message.toString())
+            }
+        })
+
+
+
         if(user_id != author){
             binding.deletepost.visibility = View.GONE
             binding.updatepost.visibility = View.GONE
