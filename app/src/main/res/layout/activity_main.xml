@@ -16,7 +16,7 @@
             app:cardCornerRadius="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="300dp" >
+            android:layout_marginTop = "400dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -44,7 +44,7 @@
                     android:layout_marginTop="11dp"
                     android:text="더보기"
                     android:fontFamily="@font/titlefont"
-                    android:textSize="15sp" />
+                    android:textSize="16sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcvCheckedBoardClass"
@@ -67,35 +67,24 @@
         android:layout_marginTop="12dp"
         android:src="@drawable/applogo" />
 
-    <TextView
-        android:id="@+id/madcamp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="25dp"
-        android:gravity="center"
-        android:text = "몰입캠프"
-        android:fontFamily="@font/titlefont"
-        android:textStyle="bold"
-        android:textSize ="35sp"/>
 
-    <TextView
-        android:id="@+id/userclass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="45dp"
-        android:layout_below="@+id/madcamp"
-        android:gravity="center"
-        android:text = "1분반"
-        android:fontFamily="@font/titlefont"
-        android:textStyle="bold"
-        android:textSize ="25sp"/>
 
     <RelativeLayout
         android:id="@+id/enterProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/boardtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="45sp"
+            android:text="몰입 캠퍼스"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/titlefont"/>
 
 
         <ImageView
@@ -104,6 +93,7 @@
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="18dp"
+            android:layout_marginTop="5dp"
             android:src="@drawable/defaultprofile" />
 
         <TextView
