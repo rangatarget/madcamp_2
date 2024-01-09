@@ -6,6 +6,7 @@ import android.os.Bundle
 import retrofit2.Call
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.madcamp_2.databinding.ActivityRegisterBinding
 import retrofit2.Response
@@ -23,11 +24,19 @@ class Register : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        val classAdapter = ArrayAdapter.createFromResource(
+            this, R.array.class_array, android.R.layout.simple_spinner_item
+        ).apply {
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
+
+        binding.inputclass.adapter = classAdapter
         binding.submit.setOnClickListener{
             binding.apply {
                 val id = inputid.text.toString()
                 val pw = inputpassword.text.toString()
-                val classes = inputclass.text.toString()
+                val classes = inputclass.selectedItem.toString()
                 val pwcheck = inputpasswordconfirm.text.toString()
 
                 if(id == "" || pw == "" || classes == "") {
@@ -39,7 +48,7 @@ class Register : AppCompatActivity() {
                     return@setOnClickListener
                 }
             }
-            val newUser = RegisterModel(binding.inputid.text.toString(), binding.inputpassword.text.toString(), binding.inputclass.text.toString())
+            val newUser = RegisterModel(binding.inputid.text.toString(), binding.inputpassword.text.toString(), binding.inputclass.selectedItem.toString())
             api.register(newUser).enqueue(object: retrofit2.Callback<RegisterResult>{
                 override fun onResponse(call: Call<RegisterResult>, response: Response<RegisterResult>) {
                     val result = response.body()?.message ?: return

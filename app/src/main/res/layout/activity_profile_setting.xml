@@ -65,7 +65,7 @@
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="11dp"
                     android:layout_toEndOf="@id/nickname"
                     android:src="@drawable/editnickname" />
             </RelativeLayout>
