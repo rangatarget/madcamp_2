@@ -121,6 +121,7 @@
                         android:textSize="18sp" />
 
                     <EditText
+                        android:id="@+id/searchtext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rectangle"
@@ -136,6 +137,15 @@
                         android:fontFamily="@font/titlefont"
                         android:textSize="20dp"
                         android:hint = "검색어를 입력해주세요."/>
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/search"
+                        android:layout_alignTop="@+id/searchtext"
+                        android:layout_alignEnd="@+id/searchtext"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"/>
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
