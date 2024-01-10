@@ -37,7 +37,7 @@ class BlogAdapter(val context: Context, private val itemList: ArrayList<BlogMode
         val item = itemList[position]
         holder.title.text = removeTags(item.title)
         val originalText = removeTags(item.description)
-        val maxLength = 30
+        val maxLength = 80
         if(originalText != null && originalText.length > 0) {
             if (originalText.length > maxLength) {
                 val truncatedText = originalText.substring(0, maxLength) + "..."
