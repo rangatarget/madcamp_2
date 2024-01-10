@@ -120,7 +120,7 @@
                         android:textSize="18sp" />
 
                     <EditText
-                        android:id="@+id/searchedit"
+                        android:id="@+id/searchtext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rectangle"
