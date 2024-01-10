@@ -9,6 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class BoardAdapter(val context: Context, private val itemList: ArrayList<BoardModel>, val classname: String) :
     RecyclerView.Adapter<BoardAdapter.BoardViewHolder>() {
@@ -17,6 +20,7 @@ class BoardAdapter(val context: Context, private val itemList: ArrayList<BoardMo
         val title: TextView = itemView.findViewById(R.id.title)
         val contents: TextView = itemView.findViewById(R.id.contents)
         val author: TextView = itemView.findViewById(R.id.author)
+        val recomnum: TextView = itemView.findViewById(R.id.recommendnum)
 
         fun bind(item: BoardModel) {
             itemView.setOnClickListener {
@@ -63,6 +67,23 @@ class BoardAdapter(val context: Context, private val itemList: ArrayList<BoardMo
             holder.contents.text = originalText
         }
         holder.author.setText("글쓴이 : " + item.author_nickname)
+        val api = RetroInterface.create()
+        api.getRecommend(giveidnum(item._id)).enqueue(object: Callback<onlynumber> {
+            override fun onResponse(
+                call: Call<onlynumber>,
+                response: Response<onlynumber>
+            ) {
+                val response: onlynumber = response.body() ?: return
+                Log.d("추천 수", "recommends: " + response.toString())
+                val recommendnum = response.recommendcount
+                holder.recomnum.setText("추천 수 : " + recommendnum)
+            }
+
+            override fun onFailure(call: Call<onlynumber>, t: Throwable) {
+                Log.d("testt",t.message.toString())
+            }
+        })
+
         Log.d("onBindViewHolder",item.title)
         holder.bind(item)
     }
