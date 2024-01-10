@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/white">
 
     <ImageView
@@ -24,7 +24,20 @@
         android:textStyle="bold"
         android:fontFamily="@font/titlefont"/>
 
+    <TextView
+        android:id="@+id/userclassdisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/boardtitle"
+        android:text="몰입캠프 1분반"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="#6E6E6E"
+        android:fontFamily="@font/titlefont"/>
+
     <LinearLayout
+        android:id="@+id/userInfoLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -52,9 +65,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/boardtitle"
         android:layout_alignParentStart="true"
         android:layout_marginStart="0dp"
+        android:layout_below="@id/userInfoLayout"
         tools:context=".MainActivity">
 
         <LinearLayout
@@ -66,7 +79,71 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="20dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/navericon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"/>
+
+                    <TextView
+                        android:id="@+id/naverblogsearch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/navericon"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/titlefont"
+                        android:text="네이버 검색"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/naversearch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/naverblogsearch"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/titlefont"
+                        android:text="무엇이든 검색해보세요. 검색 결과에 맞는 블로그를 보여드려요."
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/searchedit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_below="@+id/naversearch"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="8dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:fontFamily="@font/titlefont"
+                        android:textSize="20dp"
+                        android:hint = "검색어를 입력해주세요."/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginRight="20dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="4dp">
@@ -115,7 +192,6 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="10dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="4dp">
 
@@ -125,6 +201,13 @@
                     android:orientation="vertical"
                     android:padding="10dp">
 
+                    <ImageView
+                        android:id="@+id/staricon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp" />
+
                     <TextView
                         android:id="@+id/CheckedBoardClass"
                         android:layout_width="wrap_content"
@@ -132,6 +215,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginTop="2dp"
                         android:fontFamily="@font/titlefont"
+                        android:layout_toRightOf="@id/staricon"
                         android:text="즐겨찾기 게시판"
                         android:textSize="30sp"
                         android:textStyle="bold" />
@@ -149,6 +233,43 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rcvCheckedBoardClass"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="45dp"
+                        android:background="@android:color/background_light" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/top5post"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/titlefont"
+                        android:text="추천 수 TOP 5"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/top5List"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="45dp"

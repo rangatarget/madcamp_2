@@ -155,6 +155,11 @@ interface RetroInterface{
         @Body jsonparams: giveforrecommend
     ) : Call<RegisterResult>
 
+    @POST("/search/blog")
+    fun getBlog(
+        @Body jsonparams: SearchModel
+    ) : Call<ArrayList<BlogModel>>
+
 
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.
         private const val BASE_URL = "http://192.249.29.79:4000" //

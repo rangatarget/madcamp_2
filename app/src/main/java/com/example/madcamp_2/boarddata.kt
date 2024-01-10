@@ -16,6 +16,10 @@ data class BoardClassModel(
     var pinned: Boolean
 ) : Serializable
 
+data class MyBoardClassModel(
+    var name : String
+)
+
 data class BoardName(
     var name : String
 )

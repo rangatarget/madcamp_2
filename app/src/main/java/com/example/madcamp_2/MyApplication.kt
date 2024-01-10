@@ -61,3 +61,7 @@ fun reduceBitmapSize(originalBitmap: Bitmap, sampleSize: Int): Bitmap {
 
     return Bitmap.createScaledBitmap(originalBitmap, width, height, false)
 }
+
+fun removeTags(input: String): String {
+    return input.replace(Regex("<.*?>"), "")
+}

@@ -67,6 +67,14 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        binding.searchbutton.setOnClickListener{
+            val searchkeyword = binding.searchedit.text.toString()
+            val intent = Intent(this, SearchBlog::class.java)
+            intent.putExtra("searchkeyword", searchkeyword)
+            startActivity(intent)
+            finish()
+        }
     }
 
 }
