@@ -35,7 +35,7 @@ class MyComment : AppCompatActivity() {
                 }
                 val layoutManager = LinearLayoutManager(this@MyComment)
                 binding.rcvBoard.layoutManager = layoutManager
-                val adapter = CommentAdapter(this@MyComment, boards, user_id, "", "", "", "", 0)
+                val adapter = CommentAdapter(this@MyComment, boards, user_id, "", "", "", "", 0,nickname)
                 binding.rcvBoard.adapter = adapter
 
             }

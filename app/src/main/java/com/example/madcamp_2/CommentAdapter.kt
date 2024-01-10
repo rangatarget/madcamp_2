@@ -21,7 +21,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CommentAdapter(val context: Context, private val itemList: ArrayList<Comment>, val user_id : String, val classname: String, val post_title: String, val post_author: String, val post_context: String, val _id: Int) :
+class CommentAdapter(val context: Context, private val itemList: ArrayList<Comment>, val user_id : String, val classname: String, val post_title: String, val post_author: String, val post_context: String, val _id: Int,val author_nickname: String) :
     RecyclerView.Adapter<CommentAdapter.CommentViewHolder>() {
     // 뷰홀더 클래스 정의
     inner class CommentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -154,6 +154,7 @@ class CommentAdapter(val context: Context, private val itemList: ArrayList<Comme
                             intent.putExtra("classname", classname)
                             intent.putExtra("title", post_title)
                             intent.putExtra("author", post_author)
+                            intent.putExtra("author_nickname", author_nickname)
                             intent.putExtra("context", post_context)
                             intent.putExtra("_id", _id.toString())
                             (context as Activity).startActivity(intent)
