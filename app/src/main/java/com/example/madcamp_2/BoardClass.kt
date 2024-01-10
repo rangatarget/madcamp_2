@@ -30,6 +30,7 @@ class BoardClass : AppCompatActivity() {
                 response: Response<ArrayList<BoardClassModel>>
             ) {
                 val boardList: ArrayList<BoardClassModel> = response.body() ?: return
+                boardList.sortBy { it.name }
                 for (board in boardList) {
                     Log.d("board가져오기", "board: $board")
                 }

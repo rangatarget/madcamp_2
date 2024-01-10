@@ -95,7 +95,8 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"/>
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/navericon"/>
 
                     <TextView
                         android:id="@+id/naverblogsearch"
@@ -136,6 +137,15 @@
                         android:fontFamily="@font/titlefont"
                         android:textSize="20dp"
                         android:hint = "검색어를 입력해주세요."/>
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/search"
+                        android:layout_alignTop="@+id/searchtext"
+                        android:layout_alignEnd="@+id/searchtext"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"/>
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
@@ -199,21 +209,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="10dp">
+                    android:padding="5dp">
 
                     <ImageView
                         android:id="@+id/staricon"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp" />
+                        android:layout_marginTop="3dp"
+                        android:src="@drawable/star"/>
 
                     <TextView
                         android:id="@+id/CheckedBoardClass"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="2dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="1dp"
                         android:fontFamily="@font/titlefont"
                         android:layout_toRightOf="@id/staricon"
                         android:text="즐겨찾기 게시판"
@@ -225,7 +236,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="7dp"
                         android:layout_marginRight="5dp"
                         android:fontFamily="@font/titlefont"
                         android:text="더보기"
@@ -255,15 +266,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="10dp">
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/topicon"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/topicon"/>
 
                     <TextView
                         android:id="@+id/top5post"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="2dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="4dp"
                         android:fontFamily="@font/titlefont"
+                        android:layout_toRightOf="@id/topicon"
                         android:text="추천 수 TOP 5"
                         android:textSize="30sp"
                         android:textStyle="bold" />
