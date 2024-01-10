@@ -1,158 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    tools:context=".Register">
+    android:background="@android:color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:background="@android:color/white">
+
+        <ImageView
+            android:id="@+id/arrowback"
+            android:layout_width="23dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/arrowback" />
+
+        <TextView
+            android:id="@+id/register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/titlefont"
+            android:text="회원가입"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.424"
+            app:layout_constraintStart_toEndOf="@+id/arrowback"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/register"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="56dp"
+            android:text="ID*"
+            android:fontFamily="@font/chakrapetch_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/register" />
+
+        <EditText
+            android:id="@+id/inputid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/id"
+            android:layout_alignParentStart="true"
+            android:hint="ID"
+            android:inputType="textEmailAddress"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/idcert"
+            app:layout_constraintTop_toBottomOf="@id/id" />
 
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/idcert"
+            android:layout_width="63dp"
+            android:layout_height="33dp"
+            android:layout_alignTop="@id/inputid"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:text="중복 확인"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@id/inputid"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/inputid"
+            app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/register"
-        android:layout_width="104dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="66dp"
-        android:layout_marginLeft="50dp"
-        android:gravity="top"
-        android:text="회원가입"
-        android:textSize="20sp"
-        android:fontFamily="@font/registerfont"
-        android:textAppearance="@style/register_page"
-        tools:ignore="MissingConstraints" />
+        <ImageView
+            android:id="@+id/checkImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/idcert"
+            app:layout_constraintTop_toTopOf="@id/inputid"
+            android:layout_marginTop="4dp"
+            android:visibility="gone"/>
 
-    <TextView
-        android:id="@+id/id"
-        android:layout_width="55dp"
-        android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="130dp"
-        android:gravity="top"
-        android:text="ID"
-        android:fontFamily="@font/registerfont"
-        android:textAppearance="@style/register_page" />
+        <TextView
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/inputid"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="40dp"
+            android:text="PASSWORD*"
+            android:fontFamily="@font/chakrapetch_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputid" />
 
-    <EditText
-        android:id="@+id/inputid"
-        android:layout_width="320dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="160dp"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="@font/registerfont"
-        android:background="@drawable/rectangle_1" />
+        <EditText
+            android:id="@+id/inputpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/password"
+            android:hint="영문, 숫자 조합 8~16자"
+            android:inputType="textPassword"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/password" />
 
-    <TextView
-        android:id="@+id/password"
-        android:layout_width="168dp"
-        android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="240dp"
-        android:gravity="top"
-        android:text="PASSWORD"
-        android:fontFamily="@font/registerfont"
-        android:textAppearance="@style/register_page" />
+        <TextView
+            android:id="@+id/passwordconfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/inputpassword"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="40dp"
+            android:text="CONFIRM PASSWORD*"
+            android:fontFamily="@font/chakrapetch_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputpassword" />
 
-    <EditText
-        android:id="@+id/inputpassword"
-        style="@style/register_page"
-        android:layout_width="320dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="270dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/rectangle_1"
-        android:hint="영문, 숫자 조합 8~16자"
-        android:fontFamily="@font/registerfont"
-        android:inputType="textPassword" />
+        <EditText
+            android:id="@+id/inputpasswordconfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="비밀번호를 한 번 더 입력해주세요."
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/passwordconfirm" />
 
-    <TextView
-        android:id="@+id/passwordconfirm"
-        android:layout_width="168dp"
-        android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="350dp"
-        android:gravity="top"
-        android:text="PASSWORD CONFIRM"
-        android:fontFamily="@font/registerfont"
-        android:textAppearance="@style/register_page" />
+        <TextView
+            android:id="@+id/Class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="40dp"
+            android:text="CLASS*"
+            android:fontFamily="@font/chakrapetch_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputpasswordconfirm" />
 
-    <EditText
-        android:id="@+id/inputpasswordconfirm"
-        style="@style/register_page"
-        android:layout_width="320dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="380dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/rectangle_1"
-        android:hint="비밀번호를 한번 더 입력해주세요"
-        android:fontFamily="@font/registerfont"
-        android:inputType="textPassword" />
+        <Spinner
+            android:id="@+id/inputclass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Class" />
 
-    <TextView
-        android:id="@+id/Class"
-        android:layout_width="168dp"
-        android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="460dp"
-        android:gravity="top"
-        android:text="분반"
-        android:fontFamily="@font/registerfont"
-        android:textAppearance="@style/register_page" />
-
-    <EditText
-        android:id="@+id/inputclass"
-        android:layout_width="320dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="490dp"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="@font/registerfont"
-        android:background="@drawable/rectangle_1" />
-
-    <TextView
-        android:id="@+id/submit"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="580dp"
-        android:text="submit"
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
-        android:gravity="center"
-        android:background="@drawable/button_cert"/>
-
-    <TextView
-        android:id="@+id/idsubmit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="133dp"
-        android:layout_marginLeft="70dp"
-        android:text="중복 확인"
-        android:textSize="12sp"
-        android:textColor="#FFFFFF"
-        android:gravity="center"
-        android:background="@drawable/button_cert"/>
-
-    <ImageView
-        android:id="@+id/arrowback"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        app:srcCompat="@drawable/arrowback" />
-
-</RelativeLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/submit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/button_login"
+            android:text="Register"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputclass" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

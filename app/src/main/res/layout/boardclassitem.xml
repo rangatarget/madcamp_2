@@ -1,36 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="65dp"
     android:orientation="vertical">
 
     <ImageView
         android:id="@+id/pin"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/pin"
+        />
+
+    <ImageView
+        android:id="@+id/redpin"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/redpin"
         />
 
     <TextView
         android:id="@+id/nameTextView"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginLeft="50dp"
-        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="65dp"
+        android:fontFamily="@font/titlefont"
         android:gravity="center_vertical"
-        android:text="Name" />
+        android:text="Name"
+        android:textSize="27sp" />
+
+    <View
+        android:id="@+id/enterBoard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="60dp"/>
+
+    <View
+        android:id="@+id/addStar"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="0dp"/>
+
+    <View
+        android:id="@+id/bottomLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="#DFDFDF" />
 
     <TextView
-        android:id="@+id/createrTextView"
+        android:id="@+id/delete"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_toEndOf="@id/nameTextView"
-        android:layout_marginLeft="10dp"
-        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:fontFamily="@font/titlefont"
         android:gravity="center_vertical"
-        android:text="Creater" />
+        android:text="삭제하기"
+        android:textSize="20sp" />
 
 </RelativeLayout>

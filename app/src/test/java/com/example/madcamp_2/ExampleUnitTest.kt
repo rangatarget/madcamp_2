@@ -1,4 +1,4 @@
-package com.example.madcamp_2
+package com.example.new_madcamp_2
 
 import org.junit.Test
 

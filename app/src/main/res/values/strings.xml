@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">madcamp_2</string>
+    <string name="app_name">몰입캠퍼스</string>
+    <string-array name="class_array">
+        <item>1분반</item>
+        <item>2분반</item>
+        <item>3분반</item>
+        <item>4분반</item>
+    </string-array>
 </resources>

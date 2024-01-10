@@ -1,77 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#FFFFFF"
-    tools:context=".Register">
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/login"
-        android:layout_width="109dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="187dp"
-        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="LOGIN"
-        android:fontFamily="@font/loginfont"
-        android:textAppearance="@style/login_title"
-        android:textAlignment="center" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:textSize="24sp"
+        android:textStyle="bold"/>
 
     <EditText
         android:id="@+id/inputid"
-        style="@style/register_page"
-        android:layout_width="295dp"
-        android:layout_height="40dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="270dp"
-        android:background="@drawable/rectangle_1"
-        android:gravity="bottom"
-        android:textSize="20sp"
-        android:hint=" ID"
-        android:fontFamily="@font/loginfont"
-        android:textAppearance="@style/login_input" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ID"
+        android:layout_below="@id/login"
+        android:layout_marginTop="48dp"
+        android:inputType="text"/>
+
     <EditText
         android:id="@+id/inputpassword"
-        style="@style/register_page"
-        android:layout_width="295dp"
-        android:layout_height="40dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="330dp"
-        android:background="@drawable/rectangle_1"
-        android:gravity="bottom"
-        android:textSize="20sp"
-        android:hint=" PASSWORD"
-        android:fontFamily="@font/loginfont"
-        android:textAppearance="@style/login_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="PASSWORD"
+        android:layout_below="@id/inputid"
+        android:layout_marginTop="24dp"
         android:inputType="textPassword"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonlogin"
-        android:layout_width="295dp"
-        android:layout_height="45dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="385dp"
-        android:background="@drawable/button_login"
-        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Sign In"
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"/>
+        android:layout_below="@id/inputpassword"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_login"
+        android:textColor="#FFF"/>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/buttonlogin"
+        android:layout_toStartOf="@id/socialLoginText"
+        android:background="#7E7E7E" />
 
     <TextView
-        android:id="@+id/buttonsignup"
+        android:id="@+id/socialLoginText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="320dp"
-        android:layout_marginTop="440dp"
-        android:gravity="center"
-        android:text="Sign Up"
-        android:textSize="15sp" />
+        android:layout_centerHorizontal="true"
+        android:text="소셜 계정으로 로그인"
+        android:layout_below="@id/buttonlogin"
+        android:padding="4dp"
+        android:background="#00CCCCCC"
+        android:textColor="#7E7E7E"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_toEndOf="@id/socialLoginText"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/buttonlogin"
+        android:background="#7E7E7E" />
+
+    <ImageView
+        android:id="@+id/kakaologin"
+        android:layout_width="371dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/kakaologin" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp">
+
+        <TextView
+            android:id="@+id/noaccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="계정이 없으신가요?"
+            android:textSize="15sp"
+            android:textColor="#9C9999" />
+
+        <TextView
+            android:id="@+id/buttonsignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/noaccount"
+            android:layout_marginLeft="15dp"
+            android:text="회원가입"
+            android:textSize="15sp"
+            android:textColor="#9C9999" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

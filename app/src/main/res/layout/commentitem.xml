@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/userprofile"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/defaultprofile" />
+
+    <TextView
+        android:id="@+id/writer"
+        android:layout_toRightOf="@id/userprofile"
+        android:layout_alignTop="@id/userprofile"
+        android:layout_marginLeft="10dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Writer"
+        android:textStyle="bold"
+        android:fontFamily="@font/titlefont"
+        android:textSize="23sp" />
+
+    <TextView
+        android:id="@+id/context"
+        android:layout_below="@id/userprofile"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Context"
+        android:fontFamily="@font/titlefont"
+        android:textSize="23sp" />
+
+    <TextView
+        android:id="@+id/delete"
+        android:layout_below="@id/context"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="12dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="삭제"
+        android:fontFamily="@font/titlefont"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/update"
+        android:layout_below="@id/context"
+        android:layout_toLeftOf="@id/delete"
+        android:layout_marginRight="10dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="수정"
+        android:fontFamily="@font/titlefont"
+        android:textSize="15sp" />
+
+    <View
+        android:id="@+id/bottomLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/delete"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#DFDFDF" />
+
+
+</RelativeLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/background_light">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvBoard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="90dp"
+        android:background="@android:color/background_light"
+        tools:ignore="NotSibling" />
+
+    <TextView
+        android:id="@+id/boardtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="45sp"
+        android:text="게시글"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/titlefont"/>
+
+    <ImageView
+        android:id="@+id/arrowback"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"
+        app:srcCompat="@drawable/arrowback" />
+
+    <ImageView
+        android:id="@+id/buttonadd"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="22dp"
+        app:srcCompat="@drawable/pencil" />
+
+
+</RelativeLayout>

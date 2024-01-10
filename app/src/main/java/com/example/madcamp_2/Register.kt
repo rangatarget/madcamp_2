@@ -5,9 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import retrofit2.Call
 import android.util.Log
+import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.madcamp_2.databinding.ActivityRegisterBinding
-import retrofit2.Callback
 import retrofit2.Response
 
 class Register : AppCompatActivity() {
@@ -18,28 +19,45 @@ class Register : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.submit.setOnClickListener {
+        binding.arrowback.setOnClickListener{
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        val classAdapter = ArrayAdapter.createFromResource(
+            this, R.array.class_array, android.R.layout.simple_spinner_item
+        ).apply {
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
+
+        binding.inputclass.adapter = classAdapter
+        binding.submit.setOnClickListener{
             binding.apply {
                 val id = inputid.text.toString()
                 val pw = inputpassword.text.toString()
+                val classes = inputclass.selectedItem.toString()
                 val pwcheck = inputpasswordconfirm.text.toString()
-                val classes = inputclass.text.toString()
 
                 if(id == "" || pw == "" || classes == "") {
                     Toast.makeText(applicationContext, "입력하지 않은 정보가 있습니다.", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
                 if(pw != pwcheck) {
-                    Toast.makeText(applicationContext, "패스워드를 다시한번 확인해주세요.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
             }
-            val newUser = RegisterModel(binding.inputid.text.toString(), binding.inputpassword.text.toString(), binding.inputclass.text.toString())
+            val newUser = RegisterModel(binding.inputid.text.toString(), binding.inputpassword.text.toString(), binding.inputclass.selectedItem.toString())
             api.register(newUser).enqueue(object: retrofit2.Callback<RegisterResult>{
                 override fun onResponse(call: Call<RegisterResult>, response: Response<RegisterResult>) {
                     val result = response.body()?.message ?: return
-                    if(result)
+                    if(result) {
                         Toast.makeText(applicationContext, "회원가입 성공", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@Register, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
                     else
                         Toast.makeText(applicationContext, "회원가입 실패, 이미 존재하는 아이디 입니다.", Toast.LENGTH_SHORT).show()
                 }
@@ -49,40 +67,33 @@ class Register : AppCompatActivity() {
                 }
             })
         }
-        binding.idsubmit.setOnClickListener {
+        binding.idcert.setOnClickListener{
             binding.apply {
                 val id = inputid.text.toString()
-
                 if(id == "") {
-                    Toast.makeText(applicationContext, "id를 입력해주세요.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "입력하지 않은 정보가 있습니다.", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
             }
-
-            val idCert = IdCertificationModel(binding.inputid.text.toString())
-            api.idcert(idCert).enqueue(object: Callback<IdCertificationResult>{
+            val idcert = IdCertification(binding.inputid.text.toString())
+            api.idCert(idcert).enqueue(object: retrofit2.Callback<IdCertificationResult>{
                 override fun onResponse(call: Call<IdCertificationResult>, response: Response<IdCertificationResult>) {
                     val isExist = response.body()?.isExist ?: return
                     if(isExist) {
-                        Toast.makeText(applicationContext, "이미 존재하는 아이디입니다.", Toast.LENGTH_SHORT).show()
-                        Log.d("이미 존재하는 아이디입니다.", isExist.toString())
+                        Toast.makeText(applicationContext, "이미 존재하는 아이디 입니다.", Toast.LENGTH_SHORT).show()
+                        binding.checkImage.setImageResource(R.drawable.redcheck)
+                    } else {
+                        Toast.makeText(applicationContext, "사용 가능한 아이디 입니다.", Toast.LENGTH_SHORT).show()
+                        binding.checkImage.setImageResource(R.drawable.greencheck)
                     }
-                    else{
-                        Toast.makeText(applicationContext, "사용 가능한 아이디입니다.", Toast.LENGTH_SHORT).show()
-                        Log.d("사용 가능한 아이디입니다.", isExist.toString())
-                    }
+                    binding.checkImage.visibility = View.VISIBLE
                 }
 
                 override fun onFailure(call: Call<IdCertificationResult>, t: Throwable) {
                     Log.d("testt", t.message.toString())
                 }
             })
-        }
 
-        binding.arrowback.setOnClickListener{
-            val intent = Intent(this, Login::class.java)
-            startActivity(intent)
-            finish()
         }
     }
 }
