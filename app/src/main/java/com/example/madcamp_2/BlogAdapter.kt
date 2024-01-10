@@ -3,11 +3,13 @@ package com.example.madcamp_2
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 
 class BlogAdapter(val context: Context, private val itemList: ArrayList<BlogModel>) :
@@ -20,6 +22,9 @@ class BlogAdapter(val context: Context, private val itemList: ArrayList<BlogMode
         fun bind(item: BlogModel) {
             itemView.setOnClickListener {
                 Log.d("블로그 눌림", item.title)
+                val i = Intent(Intent.ACTION_VIEW)
+                i.data = Uri.parse(item.link)
+                context.startActivity(i)
             }
         }
     }
