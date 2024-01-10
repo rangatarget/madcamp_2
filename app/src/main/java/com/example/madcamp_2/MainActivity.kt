@@ -56,6 +56,26 @@ class MainActivity : AppCompatActivity() {
                 Log.d("testt",t.message.toString())
             }
         })
+        //추천수 top5 게시물 불러오기
+        api.getTop5(getmy(user_id)).enqueue(object: Callback<ArrayList<BoardModel>> {
+            override fun onResponse(
+                call: Call<ArrayList<BoardModel>>,
+                response: Response<ArrayList<BoardModel>>
+            ) {
+                val boards: ArrayList<BoardModel> = response.body() ?: return
+                Log.d("인기게시글가져오기", boards.size.toString())
+                for (board in boards) {
+                    Log.d("인기게시글가져오기", "board: $board")
+                }
+                val layoutManager = LinearLayoutManager(this@MainActivity)
+                binding.rcvCheckedBoardClass.layoutManager = layoutManager
+                val adapter = BoardAdapter(this@MainActivity, boards, " ")
+                binding.rcvCheckedBoardClass.adapter = adapter
+            }
+            override fun onFailure(call: Call<ArrayList<BoardModel>>, t: Throwable) {
+                Log.d("testt",t.message.toString())
+            }
+        })
         //더보기 버튼
         binding.moreBoardClass.setOnClickListener{
             val intent = Intent(this, BoardClass::class.java)
