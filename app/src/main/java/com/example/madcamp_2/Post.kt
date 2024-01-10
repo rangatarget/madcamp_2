@@ -51,13 +51,13 @@ class Post : AppCompatActivity() {
         binding.author.text = author_nickname
         binding.context.text = context
 
-        api.getAuthorImage(giveuserandpost(user_id, _id)).enqueue(object: Callback<imageandisrecommend> {
+        api.getAuthorImage(giveuserandpost(user_id, _id, author)).enqueue(object: Callback<imageandisrecommend> {
             override fun onResponse(
                 call: Call<imageandisrecommend>,
                 response: Response<imageandisrecommend>
             ) {
                 val response: imageandisrecommend = response.body() ?: return
-                if(response.image != null){
+                if(response.image != null && response.image.length !=0){
                     val profile_bitmap = decodeBase64ToImage(response.image)
                     Glide.with(this@Post).load(profile_bitmap).circleCrop().into(binding.authorprofile)
                 }
