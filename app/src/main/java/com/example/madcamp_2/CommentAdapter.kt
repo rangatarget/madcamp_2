@@ -155,6 +155,7 @@ class CommentAdapter(val context: Context, private val itemList: ArrayList<Comme
                             intent.putExtra("title", post_title)
                             intent.putExtra("author", post_author)
                             intent.putExtra("author_nickname", author_nickname)
+                            Log.d("Adapter",author_nickname)
                             intent.putExtra("context", post_context)
                             intent.putExtra("_id", _id.toString())
                             (context as Activity).startActivity(intent)

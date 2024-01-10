@@ -94,6 +94,7 @@ class Post : AppCompatActivity() {
                 val layoutManager = LinearLayoutManager(this@Post)
                 binding.rcvComments.layoutManager = layoutManager
                 val adapter = CommentAdapter(this@Post, comments, user_id, classname, title, author, context, _id,author_nickname)
+                Log.d("",author_nickname)
                 binding.rcvComments.adapter = adapter
             }
 
