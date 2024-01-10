@@ -19,6 +19,7 @@ class SearchBlog : AppCompatActivity() {
         binding = ActivitySearchBlogBinding.inflate(layoutInflater)
         val receivedIntent = intent
         val keyword = receivedIntent.getStringExtra("searchkeyword").toString()
+        binding.searchedit.setText(keyword)
         setContentView(binding.root)
 
         api.getBlog(SearchModel(keyword)).enqueue(object:
@@ -42,7 +43,11 @@ class SearchBlog : AppCompatActivity() {
             }
         })
         binding.search.setOnClickListener {
-
+            val searchkeyword = binding.searchedit.text.toString()
+            val intent = Intent(this, SearchBlog::class.java)
+            intent.putExtra("searchkeyword", searchkeyword)
+            startActivity(intent)
+            finish()
         }
         binding.arrowback.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
