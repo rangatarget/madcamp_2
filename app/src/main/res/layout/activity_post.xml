@@ -82,6 +82,7 @@
                     android:textSize="30sp" />
 
                 <RelativeLayout
+                    android:id="@+id/con"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/context">
@@ -119,6 +120,16 @@
                         android:src="@drawable/thumb_gray" />
 
                 </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcvComments"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/con"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:color/background_light"
+                    tools:ignore="NotSibling" />
+
             </RelativeLayout>
 
             <View
@@ -127,15 +138,6 @@
                 android:background="#A1A1A1"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rcvComments"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-
-                android:background="@android:color/background_light"
-                tools:ignore="NotSibling" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
