@@ -85,6 +85,11 @@ data class getmy(
     var id: String
 )
 
+data class giveuserandpost(
+    var user_id: String,
+    var post_id: Int
+)
+
 data class deleteboardclass(
     var name: String
 )
@@ -97,4 +102,22 @@ data class pinboardclass(
 
 data class onlyimage(
     var image: String
+)
+
+data class imageandisrecommend(
+    var image: String,
+    var isRecommended: Boolean
+)
+
+data class giveidnum(
+    var id: Int
+)
+data class giveforrecommend(
+    var good: Boolean,
+    var post_id: Int,
+    var user_id: String
+)
+
+data class onlynumber(
+    var recommendcount: Int
 )

@@ -54,3 +54,10 @@ fun decodeBase64ToImage(encodedImage: String): Bitmap? {
     // 디코딩된 바이트 배열을 비트맵으로 변환
     return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.size)
 }
+
+fun reduceBitmapSize(originalBitmap: Bitmap, sampleSize: Int): Bitmap {
+    val width = originalBitmap.width / sampleSize
+    val height = originalBitmap.height / sampleSize
+
+    return Bitmap.createScaledBitmap(originalBitmap, width, height, false)
+}

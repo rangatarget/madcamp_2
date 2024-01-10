@@ -142,8 +142,18 @@ interface RetroInterface{
 
     @POST("/getauthorimage")
     fun getAuthorImage(
-        @Body jsonparams: getmy
-    ) : Call<onlyimage>
+        @Body jsonparams: giveuserandpost
+    ) : Call<imageandisrecommend>
+
+    @POST("/getrecommend")
+    fun getRecommend(
+        @Body jsonparams: giveidnum
+    ) : Call<onlynumber>
+
+    @POST("/recommendpost")
+    fun isRecommended(
+        @Body jsonparams: giveforrecommend
+    ) : Call<RegisterResult>
 
 
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.

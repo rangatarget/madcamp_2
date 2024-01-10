@@ -90,6 +90,9 @@ class CommentAdapter(val context: Context, private val itemList: ArrayList<Comme
         val profile = item.image
         if(profile != null){
             val profile_bitmap = decodeBase64ToImage(profile)
+            if (profile_bitmap != null) {
+                reduceBitmapSize(profile_bitmap, 4)
+            }
             Glide.with(context).load(profile_bitmap).circleCrop().into(holder.profile)
         }
         if(user_id != item.writer || classname == "") holder.delete.visibility=View.GONE
