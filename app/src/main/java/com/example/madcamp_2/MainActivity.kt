@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
             ) {
                 val boards: ArrayList<BoardClassModel> = response.body() ?: return
                 Log.d("즐겨찾기게시판가져오기", boards.size.toString())
+                boards.sortBy { it.name }
                 for (board in boards) {
                     Log.d("즐겨찾기게시판가져오기", "board: $board")
                 }
