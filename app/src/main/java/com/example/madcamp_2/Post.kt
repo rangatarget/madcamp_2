@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.madcamp_2.databinding.ActivityPostBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -32,9 +33,10 @@ class Post : AppCompatActivity() {
         val author_nickname = receivedIntent.getStringExtra("author_nickname").toString()
         val context = receivedIntent.getStringExtra("context").toString()
         val _idtemp = receivedIntent.getStringExtra("_id")?.toInt()
-
         val user_id = MyApplication.prefs.getString("id", "")
         val nickname = MyApplication.prefs.getString("nickname", "")
+        var isrecommended = false
+        var recommendnum = 0
 
         if(_idtemp == null){
             Log.d("_id가 null","")
@@ -46,8 +48,30 @@ class Post : AppCompatActivity() {
         val _id : Int = _idtemp!!
         Log.d("title : ",title)
         binding.posttitle.text = title
-        binding.author.text = "작성자 : " + author_nickname
+        binding.author.text = author_nickname
         binding.context.text = context
+
+        api.getAuthorImage(giveuserandpost(user_id, _id)).enqueue(object: Callback<imageandisrecommend> {
+            override fun onResponse(
+                call: Call<imageandisrecommend>,
+                response: Response<imageandisrecommend>
+            ) {
+                val response: imageandisrecommend = response.body() ?: return
+                if(response.image != null){
+                    val profile_bitmap = decodeBase64ToImage(response.image)
+                    Glide.with(this@Post).load(profile_bitmap).circleCrop().into(binding.authorprofile)
+                }
+                if(response.isRecommended == true){
+                    isrecommended = true
+                    binding.thumb.setImageResource(R.drawable.thumb_blue)
+                }
+            }
+
+            override fun onFailure(call: Call<imageandisrecommend>, t: Throwable) {
+                Log.d("testt",t.message.toString())
+            }
+        })
+
         if(user_id != author){
             binding.deletepost.visibility = View.GONE
             binding.updatepost.visibility = View.GONE
@@ -74,14 +98,90 @@ class Post : AppCompatActivity() {
                 Log.d("testt",t.message.toString())
             }
         })
+
+        api.getRecommend(giveidnum(_id)).enqueue(object: Callback<onlynumber> {
+            override fun onResponse(
+                call: Call<onlynumber>,
+                response: Response<onlynumber>
+            ) {
+                val response: onlynumber = response.body() ?: return
+                Log.d("추천 수", "recommends: " + response.toString())
+                recommendnum = response.recommendcount
+                binding.recommendnumber.setText("추천 수 : " + recommendnum)
+            }
+
+            override fun onFailure(call: Call<onlynumber>, t: Throwable) {
+                Log.d("testt",t.message.toString())
+            }
+        })
+
+        binding.thumb.setOnClickListener{
+            api.isRecommended(giveforrecommend(!isrecommended, _id, user_id)).enqueue(object: Callback<RegisterResult> {
+                override fun onResponse(
+                    call: Call<RegisterResult>,
+                    response: Response<RegisterResult>
+                ) {
+                    val response: RegisterResult = response.body() ?: return
+                    if(response.message == true){
+                        if(isrecommended == true){
+                            isrecommended = false
+                            binding.thumb.setImageResource(R.drawable.thumb_gray)
+                            recommendnum = recommendnum - 1
+                            binding.recommendnumber.setText("추천 수 : " + recommendnum)
+                        }
+                        else{
+                            isrecommended = true
+                            binding.thumb.setImageResource(R.drawable.thumb_blue)
+                            recommendnum = recommendnum + 1
+                            binding.recommendnumber.setText("추천 수 : " + recommendnum)
+                        }
+                    }
+                    else{
+                        Log.d("ERROR","")
+                    }
+                }
+
+                override fun onFailure(call: Call<RegisterResult>, t: Throwable) {
+                    Log.d("testt",t.message.toString())
+                }
+            })
+        }
+
         binding.arrowback.setOnClickListener {
             val intent = Intent(this@Post, Board::class.java)
             intent.putExtra("boardclass", classname)
             startActivity(intent)
             finish()
         }
-        binding.addcomment.setOnClickListener {
-            showCommentInput(_id, user_id, nickname, classname, title, author, context)
+        binding.makecomment.setOnClickListener {
+            val comment = binding.writecomment.text.toString()
+            api.createComment(commentcreate(user_id, nickname, comment, _id)).enqueue(object: Callback<RegisterResult> {
+                override fun onResponse(
+                    call: Call<RegisterResult>,
+                    response: Response<RegisterResult>
+                ) {
+                    val response: RegisterResult = response.body() ?: return
+                    if(response.message == true){
+                        Toast.makeText(applicationContext, "댓글이 추가되었습니다", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@Post, Post::class.java)
+                        intent.putExtra("classname", classname)
+                        intent.putExtra("title", title)
+                        intent.putExtra("author", author)
+                        intent.putExtra("author", author_nickname)
+                        intent.putExtra("context", context)
+                        intent.putExtra("_id", _id.toString())
+                        startActivity(intent)
+                        finish()
+                    }
+                    else{
+                        Toast.makeText(applicationContext, "서버 오류", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<RegisterResult>, t: Throwable) {
+                    Log.d("testt",t.message.toString())
+                }
+            })
         }
         binding.deletepost.setOnClickListener{
             Log.d("게시글 삭제 눌림","게시글 id : " + _id.toString())
@@ -113,59 +213,5 @@ class Post : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-    }
-
-    private fun showCommentInput(_id: Int, user_id: String, nickname: String, classname: String, post_title: String, post_author: String, post_context: String) {
-        // LayoutInflater를 사용하여 XML 레이아웃 파일을 View 객체로 변환
-        val inflater = LayoutInflater.from(this)
-        val dialogView = inflater.inflate(R.layout.createcomment, null)
-
-        // 다이얼로그 생성
-        val alertDialogBuilder = AlertDialog.Builder(this)
-            .setView(dialogView)
-            .setTitle("댓글 추가")
-
-        val alertDialog = alertDialogBuilder.create()
-
-        // 다이얼로그 내의 버튼과 에디트 텍스트에 대한 처리
-        val editTextTitle = dialogView.findViewById<EditText>(R.id.editComment)
-        val buttonAdd = dialogView.findViewById<Button>(R.id.buttonAdd)
-
-        buttonAdd.setOnClickListener {
-            val context = editTextTitle.text.toString()
-            // TODO: 여기서 새로운 제목을 처리하거나 저장하는 로직을 구현
-            api.createComment(commentcreate(user_id, nickname, context, _id)).enqueue(object: Callback<RegisterResult> {
-                override fun onResponse(
-                    call: Call<RegisterResult>,
-                    response: Response<RegisterResult>
-                ) {
-                    val response: RegisterResult = response.body() ?: return
-                    if(response.message == true){
-                        Toast.makeText(applicationContext, "댓글이 추가되었습니다", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this@Post, Post::class.java)
-                        intent.putExtra("classname", classname)
-                        intent.putExtra("title", post_title)
-                        intent.putExtra("author", post_author)
-                        intent.putExtra("context", post_context)
-                        intent.putExtra("_id", _id.toString())
-                        startActivity(intent)
-                        finish()
-                    }
-                    else{
-                        Toast.makeText(applicationContext, "서버 오류", Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-                override fun onFailure(call: Call<RegisterResult>, t: Throwable) {
-                    Log.d("testt",t.message.toString())
-                }
-            })
-
-            // 다이얼로그를 닫음
-            alertDialog.dismiss()
-        }
-
-        // 다이얼로그 표시
-        alertDialog.show()
     }
 }

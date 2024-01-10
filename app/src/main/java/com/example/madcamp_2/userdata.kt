@@ -20,7 +20,8 @@ data class LoginModel(
 data class LoginResult(
     var nickname : String,
     var image : String,
-    var id : String
+    var id : String,
+    var classes: String
 )
 
 data class IdCertification(
@@ -35,9 +36,35 @@ data class kakaoExist(
     var id: String
 )
 
+data class kakaologinreturn(
+    var id: String,
+    val nickname: String,
+    val image: String,
+    val classes: String
+)
+
 data class kakaoregister(
     var id: String,
     var profile: String,
     var classes: String,
+    var nickname: String
+)
+
+data class changepassword(
+    var id: String,
+    var oldpw: String,
+    var newpw: String
+)
+
+data class UrlResult(
+    var url: String
+)
+
+data class signout(
+    var id: String
+)
+
+data class editnick(
+    var id: String,
     var nickname: String
 )

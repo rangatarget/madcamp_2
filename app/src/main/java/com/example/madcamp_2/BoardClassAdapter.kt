@@ -7,30 +7,79 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class BoardClassAdapter(val context: Context, private val itemList: ArrayList<BoardClassModel>) :
+class BoardClassAdapter(val context: Context, private val itemList: ArrayList<BoardClassModel>, val isMy: Boolean, val user_id: String, val isChecked: Boolean) :
     RecyclerView.Adapter<BoardClassAdapter.BoardClassViewHolder>() {
+
+    val api = RetroInterface.create()
 
     // 뷰홀더 클래스 정의
     inner class BoardClassViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameTextView: TextView = itemView.findViewById(R.id.nameTextView)
         val enterBoard: View = itemView.findViewById(R.id.enterBoard)
         val addStar: View = itemView.findViewById(R.id.addStar)
+        val delete: TextView = itemView.findViewById(R.id.delete)
+        val pin: ImageView = itemView.findViewById(R.id.pin)
+        val redpin: ImageView = itemView.findViewById(R.id.redpin)
         fun bind(item: BoardClassModel){
             enterBoard.setOnClickListener{
-                val intent = Intent(context, Board::class.java)
-                intent.putExtra("boardclass", item.name)
-                itemView.context.startActivity(intent)
-                (context as Activity).finish()
+                if(isMy == false){
+                    val intent = Intent(context, Board::class.java)
+                    intent.putExtra("boardclass", item.name)
+                    itemView.context.startActivity(intent)
+                    (context as Activity).finish()
+                }
             }
             addStar.setOnClickListener{
                 Log.v("즐겨찾기 버튼 누름", "게시판 이름 : " + item.name)
+                if(isChecked == false) {
+                    val pin = !(item.pinned)
+                    item.pinned = pin
+                    notifyDataSetChanged()
+                    api.pinBoardClass(pinboardclass(user_id, pin, item.name))
+                        .enqueue(object : Callback<RegisterResult> {
+                            override fun onResponse(
+                                call: Call<RegisterResult>,
+                                response: Response<RegisterResult>
+                            ) {
+                                val result: RegisterResult = response.body() ?: return
+                                if (result.message == true) {
+                                    Log.d("pin성공", "")
+                                }
+                            }
+
+                            override fun onFailure(call: Call<RegisterResult>, t: Throwable) {
+                                Log.d("testt", t.message.toString())
+                            }
+                        })
+                }
+            }
+            delete.setOnClickListener{
+                api.deleteBoardClass(deleteboardclass(item.name)).enqueue(object: Callback<RegisterResult> {
+                    override fun onResponse(
+                        call: Call<RegisterResult>,
+                        response: Response<RegisterResult>
+                    ) {
+                        val result: RegisterResult = response.body() ?: return
+                        if(result.message == true){
+                            val intent = Intent(context, MyBoardClass::class.java)
+                            itemView.context.startActivity(intent)
+                            (context as Activity).finish()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<RegisterResult>, t: Throwable) {
+                        Log.d("testt",t.message.toString())
+                    }
+                })
             }
         }
     }
@@ -48,6 +97,15 @@ class BoardClassAdapter(val context: Context, private val itemList: ArrayList<Bo
         val item = itemList[position]
         holder.nameTextView.text = item.name
         Log.d("BoardClass bind",item.name)
+        if(isMy == false) holder.delete.visibility=View.GONE
+        if(item.pinned || isChecked){
+            holder.pin.visibility=View.GONE
+            holder.redpin.visibility=View.VISIBLE
+        }
+        else{
+            holder.pin.visibility=View.VISIBLE
+            holder.redpin.visibility=View.GONE
+        }
         holder.bind(item)
     }
 

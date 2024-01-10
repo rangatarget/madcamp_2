@@ -12,7 +12,8 @@ data class BoardModel(
 
 data class BoardClassModel(
     var name: String,
-    var creater: String
+    var creater: String,
+    var pinned: Boolean
 ) : Serializable
 
 data class BoardName(
@@ -28,10 +29,13 @@ data class CreateboardclassResponse(
     var success: Boolean
 )
 
+data class getboardclass(
+    var user_id: String
+)
+
 data class Checkedboardclass(
     var id: String
 )
-
 data class getcomment(
     var _id: Int
 )
@@ -39,7 +43,8 @@ data class Comment(
     var writer: String,
     var context: String,
     var writer_nickname: String,
-    var _id: Int
+    var _id: Int,
+    var image: String
 )
 
 data class boardcreate(
@@ -76,8 +81,43 @@ data class update_post(
     var context: String
 )
 
-data class giveStar(
-    var user: String, //user id
-    var boardclass: String, //게사판 이름
-    var star: Boolean //즐겨찾기 등록시 true, 해제시 false
+data class getmy(
+    var id: String
+)
+
+data class giveuserandpost(
+    var user_id: String,
+    var post_id: Int
+)
+
+data class deleteboardclass(
+    var name: String
+)
+
+data class pinboardclass(
+    var user_id: String,
+    var pinned: Boolean,
+    var boardclass: String
+)
+
+data class onlyimage(
+    var image: String
+)
+
+data class imageandisrecommend(
+    var image: String,
+    var isRecommended: Boolean
+)
+
+data class giveidnum(
+    var id: Int
+)
+data class giveforrecommend(
+    var good: Boolean,
+    var post_id: Int,
+    var user_id: String
+)
+
+data class onlynumber(
+    var recommendcount: Int
 )

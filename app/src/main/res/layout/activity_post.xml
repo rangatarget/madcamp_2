@@ -28,114 +28,114 @@
         android:text = "수정"
         android:textSize = "20sp" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="20dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_marginTop="35dp">
-
-            <ImageView
-                android:id="@+id/authorprofile"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/defaultprofile" />
-
-            <TextView
-                android:id="@+id/author"
-                android:fontFamily="@font/titlefont"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@id/authorprofile"
-                android:text="author"
-                android:textStyle="bold"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/posttitle"
-                android:layout_marginLeft="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/authorprofile"
-                android:textSize="40sp"
-                android:text="Title"
-                android:fontFamily="@font/titlefont"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/context"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/posttitle"
-                android:text="context"
-                android:layout_marginLeft="10dp"
-                android:fontFamily="@font/titlefont"
-                android:textSize="30sp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/context">
-
-                <TextView
-                    android:id="@+id/commentnumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:fontFamily="@font/titlefont"
-                    android:text="댓글개수"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/recommendnumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_toRightOf="@id/commentnumber"
-                    android:fontFamily="@font/titlefont"
-                    android:text="댓글개수"
-                    android:textSize="20sp" />
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="25dp">
 
                 <ImageView
-                    android:id="@+id/thumb"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="0dp"
-                    android:layout_marginTop="5dp"
-                    android:src="@drawable/thumb_gray" />
+                    android:id="@+id/authorprofile"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/defaultprofile" />
 
+                <TextView
+                    android:id="@+id/author"
+                    android:fontFamily="@font/titlefont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/authorprofile"
+                    android:text="author"
+                    android:textStyle="bold"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/posttitle"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/authorprofile"
+                    android:textSize="40sp"
+                    android:text="Title"
+                    android:fontFamily="@font/titlefont"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/context"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/posttitle"
+                    android:text="context"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/titlefont"
+                    android:textSize="30sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/context">
+
+                    <TextView
+                        android:id="@+id/commentnumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/titlefont"
+                        android:text="댓글개수"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/recommendnumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_toRightOf="@id/commentnumber"
+                        android:fontFamily="@font/titlefont"
+                        android:text="댓글개수"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/thumb"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/thumb_gray" />
+
+                </RelativeLayout>
             </RelativeLayout>
-        </RelativeLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#A1A1A1"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#A1A1A1"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvComments"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:background="@android:color/background_light"
-            tools:ignore="NotSibling" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvComments"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/background_light"
+                tools:ignore="NotSibling" />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     <RelativeLayout
         android:layout_width="match_parent"

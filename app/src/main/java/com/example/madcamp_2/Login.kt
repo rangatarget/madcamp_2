@@ -1,6 +1,5 @@
 package com.example.madcamp_2
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,7 +7,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -50,14 +48,14 @@ class Login : AppCompatActivity() {
                 }
             }
 
-            val loginUser =
-                LoginModel(binding.inputid.text.toString(), binding.inputpassword.text.toString())
+            val loginUser = LoginModel(binding.inputid.text.toString(), binding.inputpassword.text.toString())
             api.login(loginUser).enqueue(object : Callback<LoginResult> {
                 override fun onResponse(call: Call<LoginResult>, response: Response<LoginResult>) {
                     val user = response.body() ?: return
                     val user_id = user.id
                     val user_nickname = user.nickname
                     val user_profile = user.image
+                    val user_class = user.classes
                     if (user_id != "") {
                         Toast.makeText(
                             applicationContext,
@@ -67,10 +65,8 @@ class Login : AppCompatActivity() {
                         Log.d("로그인 성공", "user_nickname : " + user_nickname + "  profile_url : ")
                         MyApplication.prefs.setString("id", user_id)
                         MyApplication.prefs.setString("nickname", user_nickname)
-                        if (user_profile != null) MyApplication.prefs.setString(
-                            "profile",
-                            user_profile
-                        )
+                        if (user_profile != null) MyApplication.prefs.setString("profile", user_profile)
+                        MyApplication.prefs.setString("class", user_class)
                         val intent = Intent(this@Login, MainActivity::class.java)
                         startActivity(intent)
                         finish()
@@ -102,26 +98,28 @@ class Login : AppCompatActivity() {
                         Log.d("loginkakao", "fail error")
                     } else if (user != null) {
                         val userId = user.id.toString()
+                        Log.d("유저의 아이디", userId)
                         val nickname = user.kakaoAccount?.profile?.nickname.toString()
                         val profile = user.kakaoAccount?.profile?.profileImageUrl.toString()
                         Log.d("loginkakao", nickname + ", " + userId + ", " + profile)
                         api.kakaoLogin(kakaoExist(userId))
-                            .enqueue(object : Callback<RegisterResult> {
+                            .enqueue(object : Callback<kakaologinreturn> {
                                 override fun onResponse(
-                                    call: Call<RegisterResult>,
-                                    response: Response<RegisterResult>
+                                    call: Call<kakaologinreturn>,
+                                    response: Response<kakaologinreturn>
                                 ) {
-                                    val isExist = response.body()?.message ?: return
-                                    if (isExist == true) {
+                                    val user_info = response.body()?: return
+                                    if (user_info.id != "") {
                                         Toast.makeText(
                                             applicationContext,
                                             nickname + "님 환영합니다",
                                             Toast.LENGTH_SHORT
                                         ).show()
                                         Log.d("카카오 로그인 성공", nickname)
-                                        MyApplication.prefs.setString("nickname", nickname)
-                                        MyApplication.prefs.setString("id", userId)
-                                        MyApplication.prefs.setString("profile", profile)
+                                        MyApplication.prefs.setString("nickname", user_info.nickname)
+                                        MyApplication.prefs.setString("id", user_info.id)
+                                        MyApplication.prefs.setString("profile", user_info.image)
+                                        MyApplication.prefs.setString("class", user_info.classes)
                                         val intent = Intent(this@Login, MainActivity::class.java)
                                         startActivity(intent)
                                         finish()
@@ -136,7 +134,7 @@ class Login : AppCompatActivity() {
                                     }
                                 }
 
-                                override fun onFailure(call: Call<RegisterResult>, t: Throwable) {
+                                override fun onFailure(call: Call<kakaologinreturn>, t: Throwable) {
                                     Log.d("testt", t.message.toString())
                                 }
                             })
@@ -180,14 +178,7 @@ class Login : AppCompatActivity() {
                     ) {
                         val response: RegisterResult = response.body() ?: return
                         if (response.message == true) {
-                            Toast.makeText(applicationContext, "계정 생성 완료", Toast.LENGTH_SHORT)
-                                .show()
-                            MyApplication.prefs.setString("nickname", nickname)
-                            MyApplication.prefs.setString("id", id)
-                            MyApplication.prefs.setString("profile", profile)
-                            val intent = Intent(this@Login, MainActivity::class.java)
-                            startActivity(intent)
-                            finish()
+                            Toast.makeText(applicationContext, "계정 생성 완료", Toast.LENGTH_SHORT).show()
                         } else {
                             Toast.makeText(applicationContext, "ERROR", Toast.LENGTH_SHORT).show()
                         }
