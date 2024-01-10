@@ -3,6 +3,10 @@
     <style name="Base.Theme.madcamp_2" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <style name="SplashTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+            <item name="windowNoTitle">true</item>
+            <item name="windowActionBar">false</item>
+        </style>
     </style>
 
     <style name="Theme.madcamp_2" parent="Base.Theme.madcamp_2" />

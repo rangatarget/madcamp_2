@@ -1,5 +1,3 @@
-import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -16,13 +14,11 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildFeatures  {
         viewBinding = true
-        buildConfig = true
     }
 
     buildTypes {
@@ -43,8 +39,6 @@ android {
     }
 }
 
-
-
 dependencies {
 
     implementation("androidx.core:core-ktx:1.9.0")
@@ -58,10 +52,6 @@ dependencies {
     implementation("com.google.code.gson:gson:2.8.8")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.github.bumptech.glide:glide:4.12.0")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
-    implementation("androidx.cardview:cardview:1.0.0")
-    implementation("de.hdodenhof:circleimageview:3.1.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
