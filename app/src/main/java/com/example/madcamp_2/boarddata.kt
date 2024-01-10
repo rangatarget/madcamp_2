@@ -92,7 +92,7 @@ data class getmy(
 data class giveuserandpost(
     var user_id: String,
     var post_id: Int,
-    var id: String // 작성자
+    var id: String
 )
 
 data class deleteboardclass(

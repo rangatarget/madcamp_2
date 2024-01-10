@@ -52,6 +52,7 @@
         android:textSize="15sp" />
 
     <View
+        android:id="@+id/bottomLine"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_alignParentBottom="true"

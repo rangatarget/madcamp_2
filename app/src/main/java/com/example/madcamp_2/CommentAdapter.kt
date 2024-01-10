@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +30,7 @@ class CommentAdapter(val context: Context, private val itemList: ArrayList<Comme
         val delete: TextView = itemView.findViewById(R.id.delete)
         val update: TextView = itemView.findViewById(R.id.update)
         val profile: ImageView = itemView.findViewById(R.id.userprofile)
+        val bottomLine: View = itemView.findViewById(R.id.bottomLine)
 
         fun bind(item: Comment){
             delete.setOnClickListener {
@@ -90,14 +92,18 @@ class CommentAdapter(val context: Context, private val itemList: ArrayList<Comme
         val profile = item.image
         if(profile != null){
             val profile_bitmap = decodeBase64ToImage(profile)
-            if (profile_bitmap != null) {
-                reduceBitmapSize(profile_bitmap, 4)
-            }
             Glide.with(context).load(profile_bitmap).circleCrop().into(holder.profile)
         }
         if(user_id != item.writer || classname == "") holder.delete.visibility=View.GONE
         if(user_id != item.writer || classname == "") holder.update.visibility=View.GONE
-        if(user_id == item.writer || classname == "") holder.writer.setTextColor(Color.parseColor("#2051B5"))
+        if(post_author == item.writer || classname == "") holder.writer.setTextColor(Color.parseColor("#2051B5"))
+        if(user_id == item.writer || classname == "") holder.writer.setTextColor(Color.parseColor("#439800"))
+
+        if (position == itemList.size - 1) {
+            holder.bottomLine.visibility = View.GONE
+        } else {
+            holder.bottomLine.visibility = View.VISIBLE
+        }
 
         holder.bind(item)
     }

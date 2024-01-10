@@ -21,6 +21,7 @@ class BoardAdapter(val context: Context, private val itemList: ArrayList<BoardMo
         val contents: TextView = itemView.findViewById(R.id.contents)
         val author: TextView = itemView.findViewById(R.id.author)
         val recomnum: TextView = itemView.findViewById(R.id.recommendnum)
+        val bottomLine: View = itemView.findViewById(R.id.bottomLine)
 
         fun bind(item: BoardModel) {
             itemView.setOnClickListener {
@@ -83,6 +84,12 @@ class BoardAdapter(val context: Context, private val itemList: ArrayList<BoardMo
                 Log.d("testt",t.message.toString())
             }
         })
+
+        if (position == itemList.size - 1) {
+            holder.bottomLine.visibility = View.GONE
+        } else {
+            holder.bottomLine.visibility = View.VISIBLE
+        }
 
         Log.d("onBindViewHolder",item.title)
         holder.bind(item)

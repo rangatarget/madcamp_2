@@ -57,7 +57,7 @@ class Post : AppCompatActivity() {
                 response: Response<imageandisrecommend>
             ) {
                 val response: imageandisrecommend = response.body() ?: return
-                if(response.image != ""){
+                if(response.image != null && response.image.length !=0){
                     val profile_bitmap = decodeBase64ToImage(response.image)
                     Glide.with(this@Post).load(profile_bitmap).circleCrop().into(binding.authorprofile)
                 }

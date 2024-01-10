@@ -29,6 +29,7 @@ class BoardClassAdapter(val context: Context, private val itemList: ArrayList<Bo
         val delete: TextView = itemView.findViewById(R.id.delete)
         val pin: ImageView = itemView.findViewById(R.id.pin)
         val redpin: ImageView = itemView.findViewById(R.id.redpin)
+        val bottomLine: View = itemView.findViewById(R.id.bottomLine)
         fun bind(item: BoardClassModel){
             enterBoard.setOnClickListener{
                 if(isMy == false){
@@ -105,6 +106,12 @@ class BoardClassAdapter(val context: Context, private val itemList: ArrayList<Bo
         else{
             holder.pin.visibility=View.VISIBLE
             holder.redpin.visibility=View.GONE
+        }
+
+        if (position == itemList.size - 1) {
+            holder.bottomLine.visibility = View.GONE
+        } else {
+            holder.bottomLine.visibility = View.VISIBLE
         }
         holder.bind(item)
     }

@@ -68,9 +68,9 @@ class MainActivity : AppCompatActivity() {
                     Log.d("인기게시글가져오기", "board: $board")
                 }
                 val layoutManager = LinearLayoutManager(this@MainActivity)
-                binding.rcvCheckedBoardClass.layoutManager = layoutManager
+                binding.top5List.layoutManager = layoutManager
                 val adapter = BoardAdapter(this@MainActivity, boards, " ")
-                binding.rcvCheckedBoardClass.adapter = adapter
+                binding.top5List.adapter = adapter
             }
             override fun onFailure(call: Call<ArrayList<BoardModel>>, t: Throwable) {
                 Log.d("testt",t.message.toString())
