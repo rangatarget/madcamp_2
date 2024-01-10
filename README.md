@@ -2,14 +2,10 @@
 
 ### KAIST MadCamp Week2
 
----
-
 ## a. 개발 팀원
 
 - 김가연- 성균관대학교 컴퓨터교육과 20학번
 - 이형진 - 카이스트 전산학부 22학번
-
----
 
 ## b. 개발환경
 
@@ -20,28 +16,25 @@
 - IDE : Visual Studio Code, Android Studio
 - Target Device : Samsung Galaxy 21s
 
----
-
 ## c. 어플리케이션 소개
 
 몰입캠프 수강생들끼리 소통할 수 있는 커뮤니티 앱입니다.
 
 ### 1. 로그인, 회원가입 창
 
-![Screenshot_20240110_210001.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/fbe63ea3-3db8-4892-8fb9-2406b9287e6d/Screenshot_20240110_210001.jpg)
-
-![Screenshot_20240110_210055.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/19dec1b7-8d6a-4ec1-8cd9-27f7ab57c842/Screenshot_20240110_210055.jpg)
+![Screenshot_20240110_210001](https://github.com/rangatarget/madcamp_2/assets/84284757/48eb8403-c331-4b89-8f15-b5fcc5a24026)
+![Screenshot_20240110_210055](https://github.com/rangatarget/madcamp_2/assets/84284757/978b3544-625f-4393-8542-a471be835f0d)
 
 ### 주요 특징
 
-- 카카오 계정과 일반 로그인 둘 다 가능합니다.
+- 카카오 계정과 자체 로그인 둘 다 가능하도록 구현하였습니다.
 - 회원 가입시, 아이디 중복 체크 기능과 비밀번호 확인 기능을 추가하였습니다.
 
 ### 2. 메인화면
+![Screenshot_20240110_210219](https://github.com/rangatarget/madcamp_2/assets/84284757/c40f75fb-57a3-456c-a49e-c328e9389fab)
+![Screenshot_20240110_210250](https://github.com/rangatarget/madcamp_2/assets/84284757/766e3dcd-e092-4bda-83d1-d51828b2ff05)
 
-![Screenshot_20240110_210219.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/52f89702-10e8-46d4-9144-e287effbcc85/Screenshot_20240110_210219.jpg)
 
-![Screenshot_20240110_210250.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/b8458a4b-8a75-42e8-afa6-2ee8f2ab7a3a/Screenshot_20240110_210250.jpg)
 
 ### 주요 특징
 
@@ -52,17 +45,9 @@
 
 ### 3. 게시판 및 게시글 생성 및 삭제
 
-![Screenshot_20240110_210914.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/08a67c5c-fc00-40f3-b31f-4490225a5f41/Screenshot_20240110_210914.jpg)
-
-![Screenshot_20240110_210917.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/b9eb4b5a-fc05-4a4d-8865-02acdd686bc3/Screenshot_20240110_210917.jpg)
-
-![Screenshot_20240110_210929.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/114ea279-2c09-4dbe-8c18-f6d9194ef88a/Screenshot_20240110_210929.jpg)
-
-![Screenshot_20240110_211013.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/48df4401-8321-4f8a-b33e-a86a187911e3/Screenshot_20240110_211013.jpg)
-
-![Screenshot_20240110_211046.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/a0ec2351-7f75-4d1b-8cb4-c0def72a6a9b/Screenshot_20240110_211046.jpg)
-
-![Screenshot_20240110_211305.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/69428734-f550-41f7-9cf4-a8fe16eac456/Screenshot_20240110_211305.jpg)
+![Screenshot_20240110_210914](https://github.com/rangatarget/madcamp_2/assets/84284757/9c7d996e-63f2-4057-93a8-0c1a032c3c75)
+![Screenshot_20240110_210917](https://github.com/rangatarget/madcamp_2/assets/84284757/e7ea3e1b-51dd-4ba1-afc5-61e5e0b34c23)
+![Screenshot_20240110_210929](https://github.com/rangatarget/madcamp_2/assets/84284757/d6830110-269b-42a5-af71-77925126c62d)
 
 ### 주요 특징
 
@@ -72,10 +57,8 @@
 - 게시판을 즐겨찾기 할 수 있고 추천수 Top5 게시글을 확인할 수 있습니다.
 
 ### 3. 네이버 블로그 검색기능
-
-![Screenshot_20240110_211450.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/88eeedc1-5dfb-4f50-b50c-fabe44bc52cc/Screenshot_20240110_211450.jpg)
-
-![Screenshot_20240110_211453.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/2f42b3ba-2a70-4959-9c00-9ed190cc2467/Screenshot_20240110_211453.jpg)
+![Screenshot_20240110_211450](https://github.com/rangatarget/madcamp_2/assets/84284757/cdea5624-3029-44e6-9503-f71a4a97328d)
+![Screenshot_20240110_211453](https://github.com/rangatarget/madcamp_2/assets/84284757/cd9e1bd1-ac99-42fe-b8ec-8e49be967162)
 
 ### 주요 특징
 
