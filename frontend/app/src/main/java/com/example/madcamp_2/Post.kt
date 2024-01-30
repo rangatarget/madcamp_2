@@ -93,7 +93,8 @@ class Post : AppCompatActivity() {
                 binding.commentnumber.text = "댓글 " + comments.size + "개"
                 val layoutManager = LinearLayoutManager(this@Post)
                 binding.rcvComments.layoutManager = layoutManager
-                val adapter = CommentAdapter(this@Post, comments, user_id, classname, title, author, context, _id)
+                val adapter = CommentAdapter(this@Post, comments, user_id, classname, title, author, context, _id, author_nickname)
+
                 binding.rcvComments.adapter = adapter
             }
 
@@ -171,6 +172,7 @@ class Post : AppCompatActivity() {
                         intent.putExtra("title", title)
                         intent.putExtra("author", author)
                         intent.putExtra("author", author_nickname)
+                        intent.putExtra("author_nickname", author_nickname)
                         intent.putExtra("context", context)
                         intent.putExtra("_id", _id.toString())
                         startActivity(intent)
